@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Research literature and reading resources for Grasping More-than-Digital Futures.">
   <title>Research Literature | Grasping More-than-Digital Futures</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      var fallback = "classic";
+      var choices = ["classic", "blueprint", "sage", "paper"];
+      var saved = fallback;
+
+      try {
+        saved = window.localStorage.getItem("gmdf-background-choice") || fallback;
+      } catch (error) {
+        saved = fallback;
+      }
+
+      document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-11-bg-picker">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -34,6 +49,21 @@
           <li><a href="contact.html">Contact</a></li>
         
       </ul>
+      <fieldset class="background-picker" aria-label="Desktop background color">
+        <legend>Background</legend>
+        <button class="background-swatch background-swatch-classic" type="button" data-background-choice="classic" aria-pressed="true" title="Classic grey">
+          <span class="visually-hidden">Classic grey background</span>
+        </button>
+        <button class="background-swatch background-swatch-blueprint" type="button" data-background-choice="blueprint" aria-pressed="false" title="Blueprint blue">
+          <span class="visually-hidden">Blueprint blue background</span>
+        </button>
+        <button class="background-swatch background-swatch-sage" type="button" data-background-choice="sage" aria-pressed="false" title="Sage green">
+          <span class="visually-hidden">Sage green background</span>
+        </button>
+        <button class="background-swatch background-swatch-paper" type="button" data-background-choice="paper" aria-pressed="false" title="Warm paper">
+          <span class="visually-hidden">Warm paper background</span>
+        </button>
+      </fieldset>
       <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">
         Reset
       </button>
@@ -210,6 +240,6 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=2026-05-11-bg-picker"></script>
 </body>
 </html>

@@ -1,6 +1,43 @@
 (function () {
   const menuToggle = document.querySelector(".menu-toggle");
   const menuList = document.querySelector("#site-menu");
+  const backgroundSwatches = document.querySelectorAll("[data-background-choice]");
+  const backgroundStorageKey = "gmdf-background-choice";
+  const fallbackBackground = "classic";
+
+  const setBackground = (choice) => {
+    const validChoice = Array.from(backgroundSwatches).some((swatch) => swatch.dataset.backgroundChoice === choice)
+      ? choice
+      : fallbackBackground;
+
+    document.documentElement.dataset.background = validChoice;
+    backgroundSwatches.forEach((swatch) => {
+      swatch.setAttribute("aria-pressed", String(swatch.dataset.backgroundChoice === validChoice));
+    });
+
+    try {
+      window.localStorage.setItem(backgroundStorageKey, validChoice);
+    } catch (error) {
+      // The color preference should remain usable even if storage is unavailable.
+    }
+  };
+
+  if (backgroundSwatches.length > 0) {
+    let savedBackground = fallbackBackground;
+    try {
+      savedBackground = window.localStorage.getItem(backgroundStorageKey) || fallbackBackground;
+    } catch (error) {
+      savedBackground = fallbackBackground;
+    }
+
+    setBackground(savedBackground);
+
+    backgroundSwatches.forEach((swatch) => {
+      swatch.addEventListener("click", () => {
+        setBackground(swatch.dataset.backgroundChoice);
+      });
+    });
+  }
 
   if (menuToggle && menuList) {
     menuToggle.addEventListener("click", () => {
