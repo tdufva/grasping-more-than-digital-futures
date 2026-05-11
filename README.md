@@ -74,7 +74,7 @@ Most content lives in JSON files under `src/_data/`:
 - Member profiles: `src/_data/members.json`
 - News and events: `src/_data/news.json`
 - Research themes: `src/_data/researchThemes.json`
-- Contact text and email: `src/_data/contact.json`
+- Contact text and protected email labels: `src/_data/contact.json`
 - Pixel companion prompts: `src/_data/companion.json`
 
 Optional longer Markdown pages can be added when useful. See `CONTENT_GUIDE.md` for examples.

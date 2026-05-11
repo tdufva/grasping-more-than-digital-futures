@@ -20,7 +20,7 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-11-nav-trim">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-11-contact-protect">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -92,7 +92,23 @@
       
         <p>You might contact us about reading groups, seminars, co-writing, visiting talks, workshops, conferences, shared syllabi, collaborative projects, or simply to say that these questions resonate with your work.</p>
       
-      <p class="contact-line"><strong>Email:</strong> <a class="text-link" href="mailto:contact@example.org">contact@example.org</a></p>
+      <div class="contact-action-panel" data-protected-email data-ready-message="The protected contact options are ready.">
+        <p class="system-note">Protected contact</p>
+        <button class="classic-button contact-primary-button" type="button" data-email-reveal aria-pressed="false">
+          Contact Tomi by email
+        </button>
+        <p class="contact-help" id="protected-email-help">To reduce automated harvesting, the address is assembled only after you press the button.</p>
+        <div class="contact-actions" aria-describedby="protected-email-help">
+          <a class="classic-button small contact-email-link" href="#" data-email-open hidden>Open email app</a>
+          <button class="classic-button small" type="button" data-email-copy hidden>Copy email address</button>
+        </div>
+        <p class="contact-line" aria-live="polite">
+          <strong>Status:</strong> <span data-email-output>tomi dot slottedufva [at] aalto dot fi</span>
+        </p>
+        <noscript>
+          <p class="contact-line"><strong>Email:</strong> tomi dot slottedufva [at] aalto dot fi</p>
+        </noscript>
+      </div>
     </div>
   </section>
 
@@ -126,6 +142,6 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="assets/js/main.js?v=2026-05-11-nav-trim"></script>
+  <script src="assets/js/main.js?v=2026-05-11-contact-protect"></script>
 </body>
 </html>

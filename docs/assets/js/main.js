@@ -60,6 +60,60 @@
     node.textContent = currentYear;
   });
 
+  const protectedEmail = document.querySelector("[data-protected-email]");
+
+  if (protectedEmail) {
+    const revealButton = protectedEmail.querySelector("[data-email-reveal]");
+    const openLink = protectedEmail.querySelector("[data-email-open]");
+    const copyButton = protectedEmail.querySelector("[data-email-copy]");
+    const output = protectedEmail.querySelector("[data-email-output]");
+    const protectedCodes = [123, 118, 116, 112, 53, 122, 115, 118, 123, 123, 108, 107, 124, 109, 125, 104, 71, 104, 104, 115, 123, 118, 53, 109, 112];
+    const protectedShift = 7;
+    let address = "";
+
+    const decodeAddress = () => {
+      if (!address) {
+        address = protectedCodes.map((code) => String.fromCharCode(code - protectedShift)).join("");
+      }
+      return address;
+    };
+
+    const prepareContact = () => {
+      const emailAddress = decodeAddress();
+      const subject = encodeURIComponent("Grasping More-than-Digital Futures");
+      if (openLink) {
+        openLink.href = `mailto:${emailAddress}?subject=${subject}`;
+        openLink.hidden = false;
+      }
+      if (copyButton) {
+        copyButton.hidden = !navigator.clipboard;
+      }
+      if (output) {
+        output.textContent = protectedEmail.dataset.readyMessage || "The protected contact options are ready.";
+      }
+      if (revealButton) {
+        revealButton.textContent = "Contact options ready";
+        revealButton.setAttribute("aria-pressed", "true");
+      }
+      return emailAddress;
+    };
+
+    revealButton?.addEventListener("click", () => {
+      prepareContact();
+      openLink?.focus();
+    });
+
+    copyButton?.addEventListener("click", async () => {
+      const emailAddress = prepareContact();
+      try {
+        await navigator.clipboard.writeText(emailAddress);
+        if (output) output.textContent = "Email address copied to clipboard.";
+      } catch (error) {
+        if (output) output.textContent = "Copy did not work. Use the email app button, or write the softened address shown here.";
+      }
+    });
+  }
+
   const newsFilter = document.querySelector("[data-news-filter]");
   const newsItems = document.querySelectorAll("[data-news-type]");
 

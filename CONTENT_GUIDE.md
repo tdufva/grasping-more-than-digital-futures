@@ -37,7 +37,7 @@ src/_data/site.json              Homepage title, subtitle, CTAs, core interests
 src/_data/members.json           Member and coordinator profiles
 src/_data/news.json              News, events, calls, seminars, archive
 src/_data/researchThemes.json    Research theme descriptions
-src/_data/contact.json           Contact text and email
+src/_data/contact.json           Contact text and protected email labels
 src/_data/companion.json         Pixel dog messages and fetched prompts
 ```
 

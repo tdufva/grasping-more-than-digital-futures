@@ -27,7 +27,23 @@ permalink: contact.html
       {% for paragraph in contact.invitationParagraphs %}
         <p>{{ paragraph }}</p>
       {% endfor %}
-      <p class="contact-line"><strong>Email:</strong> <a class="text-link" href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+      <div class="contact-action-panel" data-protected-email data-ready-message="{{ contact.emailReadyMessage }}">
+        <p class="system-note">Protected contact</p>
+        <button class="classic-button contact-primary-button" type="button" data-email-reveal aria-pressed="false">
+          {{ contact.emailActionLabel }}
+        </button>
+        <p class="contact-help" id="protected-email-help">{{ contact.emailHelp }}</p>
+        <div class="contact-actions" aria-describedby="protected-email-help">
+          <a class="classic-button small contact-email-link" href="#" data-email-open hidden>{{ contact.emailOpenLabel }}</a>
+          <button class="classic-button small" type="button" data-email-copy hidden>{{ contact.emailCopyLabel }}</button>
+        </div>
+        <p class="contact-line" aria-live="polite">
+          <strong>Status:</strong> <span data-email-output>{{ contact.emailFallback }}</span>
+        </p>
+        <noscript>
+          <p class="contact-line"><strong>Email:</strong> {{ contact.emailFallback }}</p>
+        </noscript>
+      </div>
     </div>
   </section>
 

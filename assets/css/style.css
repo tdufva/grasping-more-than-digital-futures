@@ -47,6 +47,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -786,10 +790,42 @@ select {
   grid-column: 1 / -1;
 }
 
+.contact-action-panel {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--surface-light);
+  border: 2px solid var(--line);
+  box-shadow: inset -2px -2px 0 var(--surface-dark);
+}
+
+.contact-primary-button {
+  width: fit-content;
+  min-width: min(100%, 260px);
+}
+
+.contact-help {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .contact-line {
+  max-width: 100%;
+  margin: 0;
   padding: 12px 14px;
   background: var(--surface-light);
   border: 2px solid var(--line);
+  overflow-wrap: anywhere;
 }
 
 .companion-stage {

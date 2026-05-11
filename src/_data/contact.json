@@ -1,6 +1,11 @@
 {
   "intro": "Researchers interested in more-than-digital questions are warmly invited to get in touch. The group is informal, collaborative, and open to interdisciplinary exchange.",
-  "email": "contact@example.org",
+  "emailActionLabel": "Contact Tomi by email",
+  "emailOpenLabel": "Open email app",
+  "emailCopyLabel": "Copy email address",
+  "emailFallback": "tomi dot slottedufva [at] aalto dot fi",
+  "emailHelp": "To reduce automated harvesting, the address is assembled only after you press the button.",
+  "emailReadyMessage": "The protected contact options are ready.",
   "invitationParagraphs": [
     "We welcome doctoral researchers, postdoctoral researchers, university lecturers, professors, independent scholars, artists, educators, and other researchers working across art, craft, sloyd, education, technology, culture, and related fields.",
     "You might contact us about reading groups, seminars, co-writing, visiting talks, workshops, conferences, shared syllabi, collaborative projects, or simply to say that these questions resonate with your work."
