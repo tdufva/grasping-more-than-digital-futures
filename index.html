@@ -27,13 +27,16 @@
         <li><a href="literature.html">Literature</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">
+        Reset
+      </button>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero desktop-field" aria-labelledby="home-title">
       <div class="desktop-grid">
-        <article class="window welcome-window is-active">
+        <article class="window welcome-window is-active" data-window-id="welcome">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
             <span class="title-text">Welcome</span>
@@ -52,7 +55,7 @@
           </div>
         </article>
 
-        <article class="window about-window">
+        <article class="window about-window" data-window-id="about">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
             <h2 class="title-text">About the Collective</h2>
@@ -64,7 +67,7 @@
           </div>
         </article>
 
-        <article class="window themes-window">
+        <article class="window themes-window" data-window-id="themes">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
             <h2 class="title-text">Research Themes</h2>
@@ -81,7 +84,7 @@
           </div>
         </article>
 
-        <article class="window events-window">
+        <article class="window events-window" data-window-id="events">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
             <h2 class="title-text">Upcoming Events</h2>
@@ -102,7 +105,7 @@
           </div>
         </article>
 
-        <article class="window companion-window" data-companion>
+        <article class="window companion-window" data-companion data-window-id="companion">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
             <h2 class="title-text">Desktop Companion</h2>
@@ -148,7 +151,7 @@
           </div>
         </article>
 
-        <article class="window join-window">
+        <article class="window join-window" data-window-id="join">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
             <h2 class="title-text">Join Us</h2>

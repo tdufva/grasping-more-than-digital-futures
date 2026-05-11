@@ -150,6 +150,30 @@ a:hover {
   cursor: pointer;
 }
 
+.window-reset {
+  align-self: stretch;
+  min-height: 38px;
+  padding: 0 10px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 0;
+  border-left: 2px solid var(--line);
+  border-right: 2px solid var(--line);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.window-reset:hover {
+  color: var(--surface-light);
+  background: var(--ink);
+}
+
+.window-reset[hidden] {
+  display: none;
+}
+
 .desktop-field {
   padding: clamp(24px, 4vw, 52px) var(--gutter);
   border-bottom: 2px solid var(--line);
@@ -170,6 +194,16 @@ a:hover {
     "about join";
   gap: 18px;
   align-items: start;
+}
+
+.desktop-grid.is-free-layout {
+  position: relative;
+  display: block;
+}
+
+.desktop-grid.is-free-layout > .window {
+  position: absolute;
+  margin: 0;
 }
 
 .welcome-window {
@@ -227,6 +261,26 @@ a:hover {
       var(--surface-dark) 3px
     );
   border-bottom: 2px solid var(--line);
+}
+
+.desktop-grid.is-free-layout .title-bar {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.desktop-grid.is-free-layout .title-bar:active,
+.desktop-grid.is-free-layout .window.is-dragging .title-bar {
+  cursor: grabbing;
+}
+
+body.is-window-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.window.is-dragging {
+  box-shadow: 9px 9px 0 #4f4f4f;
 }
 
 .title-text {
@@ -890,6 +944,10 @@ select {
     display: inline-flex;
     justify-content: center;
     padding: 0 12px;
+  }
+
+  .window-reset {
+    display: none;
   }
 
   .menu-list {

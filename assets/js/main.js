@@ -37,6 +37,219 @@
     });
   }
 
+  const desktop = document.querySelector(".desktop-grid");
+  const resetWindows = document.querySelector("[data-reset-windows]");
+  const freeLayoutQuery = window.matchMedia("(min-width: 761px)");
+  const layoutStorageKey = "gmdf-window-layout-v1";
+
+  if (desktop) {
+    const desktopWindows = Array.from(desktop.querySelectorAll(":scope > .window[data-window-id]"));
+    let freeLayoutActive = false;
+    let zCounter = 10;
+
+    const readSavedLayout = () => {
+      try {
+        return JSON.parse(window.localStorage.getItem(layoutStorageKey) || "{}");
+      } catch (error) {
+        return {};
+      }
+    };
+
+    const writeSavedLayout = () => {
+      if (!freeLayoutActive) return;
+      const layout = {};
+      desktopWindows.forEach((windowPanel) => {
+        const id = windowPanel.dataset.windowId;
+        if (!id) return;
+        layout[id] = {
+          left: parseFloat(windowPanel.style.left) || 0,
+          top: parseFloat(windowPanel.style.top) || 0,
+          zIndex: parseInt(windowPanel.style.zIndex || "1", 10)
+        };
+      });
+      try {
+        window.localStorage.setItem(layoutStorageKey, JSON.stringify(layout));
+      } catch (error) {
+        // Layout persistence is a convenience; dragging should still work without storage.
+      }
+    };
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), Math.max(min, max));
+
+    const bringToFront = (windowPanel) => {
+      if (!freeLayoutActive) return;
+      zCounter += 1;
+      windowPanel.style.zIndex = String(zCounter);
+      document.querySelectorAll(".window.is-focused").forEach((activePanel) => {
+        activePanel.classList.remove("is-focused");
+      });
+      windowPanel.classList.add("is-focused");
+      writeSavedLayout();
+    };
+
+    const setWindowPosition = (windowPanel, left, top) => {
+      const maxLeft = desktop.clientWidth - windowPanel.offsetWidth;
+      const maxTop = desktop.clientHeight - windowPanel.offsetHeight;
+      windowPanel.style.left = `${clamp(left, 0, maxLeft)}px`;
+      windowPanel.style.top = `${clamp(top, 0, maxTop)}px`;
+    };
+
+    const applyFreeLayout = () => {
+      if (!desktopWindows.length || !freeLayoutQuery.matches || freeLayoutActive) return;
+
+      const savedLayout = readSavedLayout();
+      const desktopBox = desktop.getBoundingClientRect();
+      const measured = desktopWindows.map((windowPanel) => {
+        const rect = windowPanel.getBoundingClientRect();
+        const saved = savedLayout[windowPanel.dataset.windowId] || null;
+        return {
+          windowPanel,
+          left: rect.left - desktopBox.left,
+          top: rect.top - desktopBox.top,
+          width: rect.width,
+          height: rect.height,
+          saved
+        };
+      });
+      const layoutHeight = Math.max(
+        desktop.offsetHeight,
+        ...measured.map((item) => item.top + item.height)
+      );
+
+      desktop.style.height = `${layoutHeight}px`;
+      desktop.classList.add("is-free-layout");
+      freeLayoutActive = true;
+      zCounter = Math.max(10, ...measured.map((item, index) => item.saved?.zIndex || index + 1));
+
+      measured.forEach((item, index) => {
+        const { windowPanel, saved } = item;
+        windowPanel.style.width = `${item.width}px`;
+        windowPanel.style.zIndex = String(saved?.zIndex || index + 1);
+        setWindowPosition(
+          windowPanel,
+          typeof saved?.left === "number" ? saved.left : item.left,
+          typeof saved?.top === "number" ? saved.top : item.top
+        );
+      });
+
+      if (resetWindows) resetWindows.hidden = false;
+    };
+
+    const disableFreeLayout = () => {
+      if (!freeLayoutActive) return;
+      freeLayoutActive = false;
+      desktop.classList.remove("is-free-layout");
+      desktop.style.height = "";
+      desktopWindows.forEach((windowPanel) => {
+        windowPanel.classList.remove("is-dragging");
+        windowPanel.style.left = "";
+        windowPanel.style.top = "";
+        windowPanel.style.width = "";
+        windowPanel.style.zIndex = "";
+      });
+      if (resetWindows) resetWindows.hidden = true;
+    };
+
+    const resetLayout = () => {
+      try {
+        window.localStorage.removeItem(layoutStorageKey);
+      } catch (error) {
+        // Nothing to reset if storage is unavailable.
+      }
+      disableFreeLayout();
+      window.requestAnimationFrame(applyFreeLayout);
+    };
+
+    desktopWindows.forEach((windowPanel) => {
+      const handle = windowPanel.querySelector(".title-bar");
+      if (!handle) return;
+      handle.tabIndex = 0;
+      handle.setAttribute("role", "button");
+      handle.setAttribute("aria-label", `Move ${windowPanel.textContent.trim().split(/\s+/).slice(0, 4).join(" ")} window`);
+
+      let dragState = null;
+
+      handle.addEventListener("pointerdown", (event) => {
+        if (!freeLayoutActive || event.button !== 0) return;
+        event.preventDefault();
+        bringToFront(windowPanel);
+        dragState = {
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+          startLeft: parseFloat(windowPanel.style.left) || 0,
+          startTop: parseFloat(windowPanel.style.top) || 0
+        };
+        handle.setPointerCapture(event.pointerId);
+        windowPanel.classList.add("is-dragging");
+        document.body.classList.add("is-window-dragging");
+      });
+
+      handle.addEventListener("pointermove", (event) => {
+        if (!dragState || dragState.pointerId !== event.pointerId) return;
+        const nextLeft = dragState.startLeft + event.clientX - dragState.startX;
+        const nextTop = dragState.startTop + event.clientY - dragState.startY;
+        setWindowPosition(windowPanel, nextLeft, nextTop);
+      });
+
+      const stopDrag = (event) => {
+        if (!dragState || dragState.pointerId !== event.pointerId) return;
+        dragState = null;
+        windowPanel.classList.remove("is-dragging");
+        document.body.classList.remove("is-window-dragging");
+        writeSavedLayout();
+      };
+
+      handle.addEventListener("pointerup", stopDrag);
+      handle.addEventListener("pointercancel", stopDrag);
+
+      handle.addEventListener("keydown", (event) => {
+        if (!freeLayoutActive) return;
+        const step = event.shiftKey ? 24 : 8;
+        const keys = {
+          ArrowLeft: [-step, 0],
+          ArrowRight: [step, 0],
+          ArrowUp: [0, -step],
+          ArrowDown: [0, step]
+        };
+        const move = keys[event.key];
+        if (!move) return;
+        event.preventDefault();
+        bringToFront(windowPanel);
+        setWindowPosition(
+          windowPanel,
+          (parseFloat(windowPanel.style.left) || 0) + move[0],
+          (parseFloat(windowPanel.style.top) || 0) + move[1]
+        );
+        writeSavedLayout();
+      });
+    });
+
+    resetWindows?.addEventListener("click", resetLayout);
+
+    const updateLayoutMode = () => {
+      if (freeLayoutQuery.matches) {
+        applyFreeLayout();
+      } else {
+        disableFreeLayout();
+      }
+    };
+
+    freeLayoutQuery.addEventListener("change", updateLayoutMode);
+    window.addEventListener("resize", () => {
+      if (!freeLayoutActive) return;
+      desktopWindows.forEach((windowPanel) => {
+        setWindowPosition(
+          windowPanel,
+          parseFloat(windowPanel.style.left) || 0,
+          parseFloat(windowPanel.style.top) || 0
+        );
+      });
+      writeSavedLayout();
+    });
+    window.requestAnimationFrame(updateLayoutMode);
+  }
+
   const companion = document.querySelector("[data-companion]");
 
   if (companion) {
