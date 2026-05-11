@@ -24,6 +24,12 @@ npm run build
 
 The built site appears in `docs/`. GitHub Pages publishes that folder.
 
+Check editable JSON content:
+
+```bash
+npm run check
+```
+
 ## What to Edit
 
 ```text
@@ -137,13 +143,19 @@ The CSS controls the Mac OS 7-inspired visual language. The JavaScript controls 
 
 ## Publish Changes
 
-Before publishing, run:
+After editing content, publish to GitHub Pages with:
 
 ```bash
-npm run build
+npm run publish -- "Describe the update"
 ```
 
-Then commit both the edited source files and the regenerated `docs/` folder, and push to `main`. GitHub Pages will publish the contents of `docs/`.
+The publish command validates the JSON files, rebuilds `docs/`, stages only website files, creates a commit, and pushes to `main`. GitHub Pages will then publish the contents of `docs/`.
+
+To check what would be published without committing or pushing:
+
+```bash
+npm run publish -- --dry-run
+```
 
 The live site remains:
 

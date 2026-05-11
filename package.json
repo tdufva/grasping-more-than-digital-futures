@@ -5,6 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "build": "eleventy",
+    "check": "node scripts/validate-content.mjs",
+    "publish": "node scripts/publish.mjs",
     "start": "eleventy --serve --port=8080",
     "clean": "rm -rf _site"
   },

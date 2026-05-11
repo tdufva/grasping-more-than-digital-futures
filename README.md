@@ -62,6 +62,12 @@ npm run build
 
 The generated site appears in `docs/`.
 
+Check that all editable JSON content is valid:
+
+```bash
+npm run check
+```
+
 ## Edit Content
 
 Most content lives in JSON files under `src/_data/`:
@@ -82,13 +88,19 @@ The shared visual style is in `assets/css/style.css`. Small interactions, includ
 
 GitHub Pages serves the generated static site from the `docs/` folder on the `main` branch.
 
-Before publishing content edits, run:
+After editing content, publish the site with one command:
 
 ```bash
-npm run build
+npm run publish -- "Update members and news"
 ```
 
-Then commit both the source files and the regenerated `docs/` output.
+That command validates the JSON data, rebuilds `docs/`, commits the website files, and pushes `main` to GitHub. GitHub Pages then publishes the updated `docs/` folder.
+
+To preview what would be included without committing or pushing:
+
+```bash
+npm run publish -- --dry-run
+```
 
 ## Notes
 
