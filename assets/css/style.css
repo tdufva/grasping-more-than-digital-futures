@@ -165,7 +165,8 @@ a:hover {
   grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
   grid-template-areas:
     "welcome themes"
-    "about events"
+    "welcome events"
+    "welcome companion"
     "about join";
   gap: 18px;
   align-items: start;
@@ -189,6 +190,10 @@ a:hover {
 
 .join-window {
   grid-area: join;
+}
+
+.companion-window {
+  grid-area: companion;
 }
 
 .window,
@@ -629,6 +634,207 @@ select {
   border: 2px solid var(--line);
 }
 
+.companion-stage {
+  position: relative;
+  min-height: 170px;
+  overflow: hidden;
+  background:
+    linear-gradient(var(--surface-dark), var(--surface-dark)) 0 calc(100% - 24px) / 100% 2px no-repeat,
+    radial-gradient(circle at 14px 14px, rgba(17, 17, 17, 0.16) 0 1px, transparent 1px 100%) 0 0 / 18px 18px,
+    var(--surface-light);
+  border: 2px solid var(--line);
+}
+
+.dog-button {
+  position: absolute;
+  left: 8px;
+  bottom: 16px;
+  width: 160px;
+  height: 96px;
+  margin: 0;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  animation: companion-walk 9s steps(18, end) infinite alternate;
+}
+
+.dog-button:hover,
+.dog-button:focus-visible {
+  animation-play-state: paused;
+}
+
+.pixel-dog {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 160px;
+  height: 96px;
+  fill: currentColor;
+  image-rendering: pixelated;
+}
+
+.dog-eye,
+.dog-bandana {
+  fill: var(--surface-light);
+}
+
+.dog-bandana {
+  stroke: var(--ink);
+  stroke-width: 0;
+}
+
+.dog-tail {
+  transform-origin: 32px 42px;
+  animation: tail-wag 520ms steps(2, end) infinite;
+}
+
+.dog-leg {
+  transform-origin: center top;
+  animation: paw-step 520ms steps(2, end) infinite;
+}
+
+.leg-two,
+.leg-four {
+  animation-delay: 260ms;
+}
+
+.dog-shadow {
+  position: absolute;
+  left: 28px;
+  bottom: 7px;
+  width: 104px;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 14px);
+  opacity: 0.22;
+}
+
+.thought-bubble {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  min-height: 48px;
+  margin: 0;
+  padding: 9px 11px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--shadow);
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.thought-bubble::after {
+  position: absolute;
+  left: 34px;
+  bottom: -10px;
+  width: 12px;
+  height: 12px;
+  content: "";
+  background: var(--surface);
+  border-right: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  transform: rotate(45deg);
+}
+
+.companion-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.companion-counter,
+.companion-note {
+  margin: 0;
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+}
+
+.companion-note {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.companion-window.is-petted .dog-button {
+  animation-play-state: paused;
+}
+
+.companion-window.is-petted .pixel-dog {
+  animation: happy-hop 420ms steps(2, end) 1;
+}
+
+.companion-window.is-petted .thought-bubble {
+  background: var(--accent-soft);
+}
+
+.pet-spark {
+  position: absolute;
+  z-index: 3;
+  color: var(--ink);
+  font-family: var(--font-system);
+  font-size: 1rem;
+  font-weight: 700;
+  pointer-events: none;
+  animation: pet-spark 700ms steps(5, end) forwards;
+}
+
+@keyframes companion-walk {
+  from {
+    left: 8px;
+  }
+
+  to {
+    left: calc(100% - 168px);
+  }
+}
+
+@keyframes tail-wag {
+  0% {
+    transform: rotate(-8deg);
+  }
+
+  100% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes paw-step {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes happy-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pet-spark {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.4);
+  }
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -656,6 +862,7 @@ select {
       "welcome welcome"
       "about about"
       "themes events"
+      "companion companion"
       "join join";
   }
 
@@ -714,6 +921,7 @@ select {
   .desktop-grid {
     grid-template-areas:
       "welcome"
+      "companion"
       "about"
       "themes"
       "events"
@@ -747,6 +955,11 @@ select {
   .future-panel .columns {
     columns: 1;
   }
+
+  .companion-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -757,5 +970,10 @@ select {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .dog-button {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

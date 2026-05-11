@@ -46,7 +46,7 @@ http://localhost:8000
 - Literature references live in `literature.html`. Search for the comment beginning `Edit literature categories and references here`.
 - Contact text and email placeholder live in `contact.html`.
 
-The shared visual style is in `assets/css/style.css`. Small interactions, including the mobile menu and news filter, are in `assets/js/main.js`.
+The shared visual style is in `assets/css/style.css`. Small interactions, including the mobile menu, news filter, and homepage desktop companion, are in `assets/js/main.js`.
 
 ## Deploy on GitHub Pages
 
