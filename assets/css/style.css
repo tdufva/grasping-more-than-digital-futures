@@ -607,6 +607,20 @@ button.classic-button {
   margin: 0;
 }
 
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 14px 0 0;
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.profile-links a {
+  text-decoration-thickness: 2px;
+}
+
 .news-list,
 .literature-stack {
   display: grid;
