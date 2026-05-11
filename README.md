@@ -13,7 +13,6 @@ src/
     members.json
     news.json
     researchThemes.json
-    literature.json
     contact.json
     companion.json
   _includes/
@@ -22,7 +21,6 @@ src/
   members.njk
   news.njk
   research.njk
-  literature.njk
   contact.njk
 assets/
   css/
@@ -76,7 +74,6 @@ Most content lives in JSON files under `src/_data/`:
 - Member profiles: `src/_data/members.json`
 - News and events: `src/_data/news.json`
 - Research themes: `src/_data/researchThemes.json`
-- Literature references: `src/_data/literature.json`
 - Contact text and email: `src/_data/contact.json`
 - Pixel companion prompts: `src/_data/companion.json`
 
@@ -107,5 +104,5 @@ npm run publish -- --dry-run
 - Runtime site visitors receive only static HTML, CSS, and JavaScript.
 - Eleventy is used only at build time.
 - The site is responsive for desktop and mobile.
-- Placeholder people, events, links, and bibliography entries should be replaced with verified information before public launch.
+- Placeholder people, events, and links should be replaced with verified information before public launch.
 - The design intentionally uses system fonts, high-contrast borders, and simple CSS-drawn details for fast loading and easy maintenance.

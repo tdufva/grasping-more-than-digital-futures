@@ -37,7 +37,6 @@ src/_data/site.json              Homepage title, subtitle, CTAs, core interests
 src/_data/members.json           Member and coordinator profiles
 src/_data/news.json              News, events, calls, seminars, archive
 src/_data/researchThemes.json    Research theme descriptions
-src/_data/literature.json        Reading list and bibliography categories
 src/_data/contact.json           Contact text and email
 src/_data/companion.json         Pixel dog messages and fetched prompts
 ```
@@ -81,24 +80,6 @@ Open `src/_data/news.json` and add an item inside `current`:
 ```
 
 Use `YYYY-MM-DD` dates for items that should sort by date. Text dates such as `TBA` are also allowed and will appear before dated items. The `typeSlug` should be a short lower-case label such as `seminar`, `workshop`, `call`, `reading-group`, or `zoom`; the filter menu is generated automatically from the items in this file.
-
-## Add Literature
-
-Open `src/_data/literature.json`. Add a new item inside the relevant category:
-
-```json
-{
-  "author": "Author, A.",
-  "year": "2026",
-  "title": "Title of the publication.",
-  "source": "Journal, book, or source.",
-  "note": "Why this matters for the group.",
-  "url": "https://doi.org/example",
-  "linkLabel": "DOI"
-}
-```
-
-Verify all real citations before publishing.
 
 ## Optional Markdown Pages
 

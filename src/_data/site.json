@@ -1,6 +1,6 @@
 {
   "title": "Grasping More-than-Digital Futures",
-  "assetVersion": "2026-05-11-bg-picker",
+  "assetVersion": "2026-05-11-nav-trim",
   "subtitle": "A research collective for art, craft, education, culture and technology after digital and AI promises",
   "description": "Grasping More-than-Digital Futures is an informal interdisciplinary research collective for art, craft, education, culture and technology after digital and AI promises.",
   "footerTagline": "An open, informal, interdisciplinary research collective.",
@@ -9,7 +9,6 @@
     { "key": "members", "label": "Members", "url": "members.html" },
     { "key": "news", "label": "News & Events", "url": "news.html" },
     { "key": "research", "label": "Research", "url": "research.html" },
-    { "key": "literature", "label": "Literature", "url": "literature.html" },
     { "key": "contact", "label": "Contact", "url": "contact.html" }
   ],
   "home": {

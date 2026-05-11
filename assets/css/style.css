@@ -729,8 +729,7 @@ button.classic-button {
   text-decoration-thickness: 2px;
 }
 
-.news-list,
-.literature-stack {
+.news-list {
   display: grid;
   gap: 18px;
 }
@@ -776,23 +775,6 @@ select {
 .future-panel .columns {
   columns: 2;
   column-gap: 34px;
-}
-
-.bibliography-list {
-  display: grid;
-  gap: 14px;
-  margin: 0;
-  padding-left: 22px;
-}
-
-.bibliography-list li::marker {
-  content: "▣ ";
-}
-
-.bibliography-list a {
-  font-family: var(--font-system);
-  font-size: 0.86rem;
-  font-weight: 700;
 }
 
 .contact-layout {
