@@ -1,0 +1,70 @@
+{
+  "intro": "The collective is imagined as a loose international network of researchers, artists, educators, and scholars. The profiles below can be edited as the group develops.",
+  "heading": "Members and Coordinators",
+  "items": [
+    {
+      "name": "Tomi Slotte Dufva",
+      "role": "Assistant Professor in Arts Education; group coordinator",
+      "institution": "Aalto University, the School of Arts, Design and Architecture, Department of Art and Design",
+      "researchInterests": "Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education",
+      "bio": "Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.",
+      "links": [
+        { "label": "Website", "url": "https://www.thispagehassomeissues.com" },
+        { "label": "Aalto Research", "url": "https://research.aalto.fi/en/persons/tomi-slotte-dufva/" },
+        { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi" },
+        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/tomidufva?originalSubdomain=fi" },
+        { "label": "Mastodon", "url": "https://mastodon.nu/@tsdufva" }
+      ]
+    },
+    {
+      "name": "Member Placeholder 02",
+      "role": "Postdoctoral Researcher",
+      "institution": "Research institute placeholder",
+      "researchInterests": "Post-AI education, critical data studies, feminist data sciences",
+      "bio": "Studies how AI systems shape knowledge practices, pedagogical agency, and the everyday politics of data in educational settings.",
+      "links": [
+        { "label": "Website placeholder", "url": "https://example.org" }
+      ]
+    },
+    {
+      "name": "Member Placeholder 03",
+      "role": "University Lecturer",
+      "institution": "Faculty placeholder",
+      "researchInterests": "Sloyd, teacher education, more-than-digital pedagogies",
+      "bio": "Works with teacher education, craft traditions, and experimental pedagogies that connect material making with cultural analysis.",
+      "links": [
+        { "label": "member03@example.org", "url": "mailto:member03@example.org" }
+      ]
+    },
+    {
+      "name": "Member Placeholder 04",
+      "role": "Professor",
+      "institution": "School of arts / education placeholder",
+      "researchInterests": "Critical technology studies, culture, art, ecological thinking",
+      "bio": "Develops interdisciplinary research environments around artistic inquiry, cultural critique, and technological imaginaries.",
+      "links": [
+        { "label": "Website placeholder", "url": "https://example.org" }
+      ]
+    },
+    {
+      "name": "Member Placeholder 05",
+      "role": "Independent Researcher",
+      "institution": "Independent / artist-researcher placeholder",
+      "researchInterests": "Embodiment, repair cultures, artistic research methods",
+      "bio": "Combines experimental practice, writing, and public pedagogy to examine bodies, tools, infrastructures, and care.",
+      "links": [
+        { "label": "member05@example.org", "url": "mailto:member05@example.org" }
+      ]
+    },
+    {
+      "name": "Member Placeholder 06",
+      "role": "Artist-Educator",
+      "institution": "Collective / studio placeholder",
+      "researchInterests": "Digital craft, workshops, participatory methods, media archaeology",
+      "bio": "Facilitates collaborative workshops that use old and new technologies to ask how futures are made, maintained, and refused.",
+      "links": [
+        { "label": "Website placeholder", "url": "https://example.org" }
+      ]
+    }
+  ]
+}

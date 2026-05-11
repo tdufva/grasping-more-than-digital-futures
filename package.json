@@ -1,0 +1,14 @@
+{
+  "name": "grasping-more-than-digital-futures",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve --port=8080",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

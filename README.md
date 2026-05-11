@@ -2,65 +2,98 @@
 
 A complete static GitHub Pages website for the informal academic research collective **Grasping More-than-Digital Futures**.
 
-The site is built with plain HTML, CSS, and JavaScript. It uses a light, monochrome, early graphical-interface visual language inspired by old desktop window systems without using Apple branding or logos.
+The site is built with Eleventy and published as plain static HTML, CSS, and JavaScript. It uses a light, monochrome, early graphical-interface visual language inspired by old desktop window systems without using Apple branding or logos.
 
 ## File Structure
 
 ```text
-index.html
-members.html
-news.html
-research.html
-literature.html
-contact.html
+src/
+  _data/
+    site.json
+    members.json
+    news.json
+    researchThemes.json
+    literature.json
+    contact.json
+    companion.json
+  _includes/
+    layouts/
+  index.njk
+  members.njk
+  news.njk
+  research.njk
+  literature.njk
+  contact.njk
 assets/
   css/
     style.css
   js/
     main.js
+docs/
+CONTENT_GUIDE.md
 README.md
 ```
 
 ## Run Locally
 
-You can open `index.html` directly in a browser.
-
-For a local server, run:
+Install dependencies once:
 
 ```bash
-python3 -m http.server 8000
+npm install
 ```
 
-Then visit:
+Run the local development server:
+
+```bash
+npm start
+```
+
+Then visit the local URL printed by Eleventy, usually:
 
 ```text
-http://localhost:8000
+http://localhost:8080
 ```
+
+Build the static site:
+
+```bash
+npm run build
+```
+
+The generated site appears in `docs/`.
 
 ## Edit Content
 
-- Homepage content lives in `index.html`.
-- Member profiles live in `members.html`. Search for the comment beginning `Edit member cards here`.
-- News and events live in `news.html`. Search for the comment beginning `Edit news and event items here`.
-- Research themes live in `research.html`.
-- Literature references live in `literature.html`. Search for the comment beginning `Edit literature categories and references here`.
-- Contact text and email placeholder live in `contact.html`.
+Most content lives in JSON files under `src/_data/`:
+
+- Homepage content: `src/_data/site.json`
+- Member profiles: `src/_data/members.json`
+- News and events: `src/_data/news.json`
+- Research themes: `src/_data/researchThemes.json`
+- Literature references: `src/_data/literature.json`
+- Contact text and email: `src/_data/contact.json`
+- Pixel companion prompts: `src/_data/companion.json`
+
+Optional longer Markdown pages can be added when useful. See `CONTENT_GUIDE.md` for examples.
 
 The shared visual style is in `assets/css/style.css`. Small interactions, including the mobile menu, news filter, draggable homepage windows, and homepage desktop companion, are in `assets/js/main.js`.
 
 ## Deploy on GitHub Pages
 
-1. Create a GitHub repository.
-2. Add these files to the repository root.
-3. Commit and push to GitHub.
-4. In the repository, open **Settings** → **Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select the branch, usually `main`, and the root folder `/`.
-7. Save. GitHub Pages will publish the site after a short build.
+GitHub Pages serves the generated static site from the `docs/` folder on the `main` branch.
+
+Before publishing content edits, run:
+
+```bash
+npm run build
+```
+
+Then commit both the source files and the regenerated `docs/` output.
 
 ## Notes
 
-- No external dependencies are required.
+- Runtime site visitors receive only static HTML, CSS, and JavaScript.
+- Eleventy is used only at build time.
 - The site is responsive for desktop and mobile.
 - Placeholder people, events, links, and bibliography entries should be replaced with verified information before public launch.
 - The design intentionally uses system fonts, high-contrast borders, and simple CSS-drawn details for fast loading and easy maintenance.

@@ -1,0 +1,54 @@
+{
+  "title": "Grasping More-than-Digital Futures",
+  "subtitle": "A research collective for art, craft, education, culture and technology after digital and AI promises",
+  "description": "Grasping More-than-Digital Futures is an informal interdisciplinary research collective for art, craft, education, culture and technology after digital and AI promises.",
+  "footerTagline": "An open, informal, interdisciplinary research collective.",
+  "nav": [
+    { "key": "home", "label": "Home", "url": "index.html" },
+    { "key": "members", "label": "Members", "url": "members.html" },
+    { "key": "news", "label": "News & Events", "url": "news.html" },
+    { "key": "research", "label": "Research", "url": "research.html" },
+    { "key": "literature", "label": "Literature", "url": "literature.html" },
+    { "key": "contact", "label": "Contact", "url": "contact.html" }
+  ],
+  "home": {
+    "systemNote": "Informal research collective",
+    "lead": "We gather scholars, artists, educators, and makers who study how humans make, teach, learn, sense, and imagine with technologies after promises of seamless digital progress and artificial intelligence.",
+    "descriptionParagraphs": [
+      "Grasping More-than-Digital Futures is an informal interdisciplinary research collective for scholars exploring the intersections of art, craft, sloyd, education, technology, culture, and digital transformation.",
+      "Our work engages with post-digital education, post-AI pedagogies, sustainable computing, digital craft, embodiment, feminist data sciences, critical artistic research, and more-than-digital ways of knowing and making."
+    ],
+    "coreInterests": [
+      "Post-digital education and art education",
+      "Post-AI pedagogies and critical AI studies",
+      "Craft, sloyd, digital materiality, and making",
+      "Sustainable computing and ecological technologies",
+      "Embodiment, feminist data sciences, and experimental practice"
+    ],
+    "ctas": [
+      { "label": "Explore our research", "url": "research.html" },
+      { "label": "Meet the members", "url": "members.html" },
+      { "label": "Follow our events", "url": "news.html" }
+    ],
+    "interestCards": [
+      {
+        "icon": "folder",
+        "iconLabel": "Folder icon",
+        "title": "After Digital Promises",
+        "text": "We ask what education, art, and culture become when digital tools are ordinary, uneven, material, and politically charged."
+      },
+      {
+        "icon": "hand",
+        "iconLabel": "Handmade mark icon",
+        "title": "Crafted Knowledge",
+        "text": "We treat craft, sloyd, making, touch, repair, and situated practice as serious ways of thinking with technology."
+      },
+      {
+        "icon": "circuit",
+        "iconLabel": "Circuit icon",
+        "title": "Critical Technologies",
+        "text": "We study AI, data, platforms, infrastructures, and sustainable computing through feminist, ecological, and cultural lenses."
+      }
+    ]
+  }
+}

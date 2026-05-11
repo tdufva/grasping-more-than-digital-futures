@@ -1,0 +1,155 @@
+---
+layout: layouts/base.njk
+pageTitle: Grasping More-than-Digital Futures
+current: home
+description: Grasping More-than-Digital Futures is an informal interdisciplinary research collective for art, craft, education, culture and technology after digital and AI promises.
+permalink: index.html
+---
+<main id="main">
+  <section class="hero desktop-field" aria-labelledby="home-title">
+    <div class="desktop-grid">
+      <article class="window welcome-window is-active" data-window-id="welcome">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <span class="title-text">Welcome</span>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <p class="system-note">{{ site.home.systemNote }}</p>
+          <h1 id="home-title">{{ site.title }}</h1>
+          <p class="subtitle">{{ site.subtitle }}</p>
+          <p class="lead">{{ site.home.lead }}</p>
+          <div class="button-row" aria-label="Primary links">
+            {% for cta in site.home.ctas %}
+              <a class="classic-button" href="{{ cta.url }}">{{ cta.label }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+
+      <article class="window about-window" data-window-id="about">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 class="title-text">About the Collective</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          {% for paragraph in site.home.descriptionParagraphs %}
+            <p>{{ paragraph }}</p>
+          {% endfor %}
+        </div>
+      </article>
+
+      <article class="window themes-window" data-window-id="themes">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 class="title-text">Research Themes</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <ul class="check-list">
+            {% for interest in site.home.coreInterests %}
+              <li>{{ interest }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </article>
+
+      <article class="window events-window" data-window-id="events">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 class="title-text">Upcoming Events</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <ol class="compact-list">
+            {% for item in news.current | sortByDateDesc %}
+              {% if loop.index <= 2 %}
+                <li>
+                  <time datetime="{{ item.date }}">{{ item.date | shortDate }}</time>
+                  <span>{{ item.title }}</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ol>
+          <a class="text-link" href="news.html">Open the events archive</a>
+        </div>
+      </article>
+
+      <article class="window companion-window" data-companion data-window-id="companion">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 class="title-text">Desktop Companion</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <p class="system-note">{{ companion.systemNote }}</p>
+          <div class="companion-stage">
+            <button class="dog-button" type="button" data-pet-dog aria-label="Pet Pixel, the desktop research dog">
+              <svg class="pixel-dog" viewBox="0 0 160 96" role="img" aria-labelledby="dog-title dog-desc">
+                <title id="dog-title">Pixel the desktop research dog</title>
+                <desc id="dog-desc">A small black and white pixel-style dog walking across a desktop window.</desc>
+                <g class="dog-tail">
+                  <rect x="18" y="32" width="10" height="10"></rect>
+                  <rect x="8" y="22" width="12" height="10"></rect>
+                </g>
+                <g class="dog-body">
+                  <rect x="34" y="34" width="62" height="28"></rect>
+                  <rect x="46" y="24" width="30" height="14"></rect>
+                  <rect x="96" y="28" width="30" height="28"></rect>
+                  <rect x="116" y="36" width="18" height="16"></rect>
+                  <rect x="112" y="34" width="6" height="6" class="dog-eye"></rect>
+                  <rect x="130" y="44" width="8" height="6"></rect>
+                  <rect x="98" y="22" width="12" height="12"></rect>
+                  <rect x="34" y="60" width="10" height="18" class="dog-leg leg-one"></rect>
+                  <rect x="58" y="60" width="10" height="18" class="dog-leg leg-two"></rect>
+                  <rect x="82" y="60" width="10" height="18" class="dog-leg leg-three"></rect>
+                  <rect x="104" y="56" width="10" height="20" class="dog-leg leg-four"></rect>
+                  <rect x="32" y="78" width="18" height="6"></rect>
+                  <rect x="78" y="78" width="18" height="6"></rect>
+                  <rect x="96" y="58" width="18" height="8" class="dog-bandana"></rect>
+                </g>
+              </svg>
+              <span class="dog-shadow" aria-hidden="true"></span>
+            </button>
+            <p class="thought-bubble" data-dog-message aria-live="polite">{{ companion.initialMessage }}</p>
+          </div>
+          <div class="companion-controls">
+            <button class="classic-button small" type="button" data-fetch-thought>Fetch a thought</button>
+            <p class="companion-counter"><span data-pet-count>0</span> careful pets logged</p>
+          </div>
+          <p class="companion-note" data-dog-prize>{{ companion.initialNote }}</p>
+          <script type="application/json" id="companion-data">{{ companion | json | safe }}</script>
+        </div>
+      </article>
+
+      <article class="window join-window" data-window-id="join">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 class="title-text">Join Us</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <p>{{ contact.invitationParagraphs[0] }}</p>
+          <a class="classic-button small" href="contact.html">Contact the group</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="page-section" aria-labelledby="interests-title">
+    <div class="section-heading">
+      <p class="system-note">Core file index</p>
+      <h2 id="interests-title">What We Are Grasping Toward</h2>
+    </div>
+    <div class="interest-grid">
+      {% for card in site.home.interestCards %}
+        <article class="mini-panel">
+          <span class="css-icon {{ card.icon }}" role="img" aria-label="{{ card.iconLabel }}"></span>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>

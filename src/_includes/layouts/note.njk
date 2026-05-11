@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+<main id="main" class="page-shell markdown-page">
+  <article class="window page-intro">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h1 class="title-text">{{ title or pageTitle }}</h1>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      {{ content | safe }}
+    </div>
+  </article>
+</main>

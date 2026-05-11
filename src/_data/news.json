@@ -1,0 +1,60 @@
+{
+  "intro": "A place for seminars, workshops, reading groups, conference sessions, calls for papers, publications, and small announcements from the collective.",
+  "current": [
+    {
+      "date": "2026-10-14",
+      "title": "Call for Contributions: More-than-Digital Pedagogies",
+      "type": "Call",
+      "typeSlug": "call",
+      "description": "Placeholder call for short position papers, practice notes, and experimental formats around post-digital and post-AI pedagogies.",
+      "url": "https://example.org",
+      "linkLabel": "Link placeholder"
+    },
+    {
+      "date": "2026-08-28",
+      "title": "Workshop: Digital Materiality in Art and Craft Education",
+      "type": "Workshop",
+      "typeSlug": "workshop",
+      "description": "A hands-on placeholder workshop for exploring tool traces, sensors, repair, textiles, code, and more-than-digital studio practices.",
+      "url": "https://example.org",
+      "linkLabel": "Link placeholder"
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Reading Group: Situated AI After the Hype Cycle",
+      "type": "Reading Group",
+      "typeSlug": "reading-group",
+      "description": "A small online reading session on critical AI studies, pedagogical labor, uncertainty, and the cultural politics of automation.",
+      "url": "https://example.org",
+      "linkLabel": "Link placeholder"
+    },
+    {
+      "date": "2026-04-17",
+      "title": "Publication Note: Sustainable Computing in Studio Contexts",
+      "type": "Publication",
+      "typeSlug": "publication",
+      "description": "Placeholder publication announcement for a collective text on ecological limits, maintenance, and slower technology practices.",
+      "url": "https://example.org",
+      "linkLabel": "Link placeholder"
+    },
+    {
+      "date": "2026-02-06",
+      "title": "Seminar: Post-digital Culture and the Ordinary Classroom",
+      "type": "Seminar",
+      "typeSlug": "seminar",
+      "description": "Placeholder seminar for sharing early work on educational practice, digital saturation, and everyday media cultures.",
+      "url": "https://example.org",
+      "linkLabel": "Link placeholder"
+    }
+  ],
+  "archive": [
+    {
+      "date": "2025-11-20",
+      "description": "Placeholder conference session on craft, platforms, and public pedagogy."
+    },
+    {
+      "date": "2025-09-12",
+      "description": "Placeholder reading note on feminist data science and embodied methods."
+    }
+  ]
+}

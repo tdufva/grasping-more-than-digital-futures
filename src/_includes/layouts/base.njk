@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description or site.description }}">
+  <title>{% if pageTitle and pageTitle != site.title %}{{ pageTitle }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Site header">
+    <nav class="menu-bar" aria-label="Primary navigation">
+      <a class="menu-brand" href="index.html" aria-label="{{ site.title }} home">
+        <span class="pixel-mark" aria-hidden="true"></span>
+        <span>{{ site.title }}</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        Menu
+      </button>
+      <ul class="menu-list" id="site-menu">
+        {% for item in site.nav %}
+          <li><a href="{{ item.url }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+      <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">
+        Reset
+      </button>
+    </nav>
+  </header>
+
+  {{ content | safe }}
+
+  <footer class="site-footer">
+    <div>
+      <strong>{{ site.title }}</strong>
+      <p>{{ site.footerTagline }}</p>
+    </div>
+    <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "systemNote": "Tiny fieldwork game",
+  "initialMessage": "Pet Pixel, or ask for a research prompt.",
+  "initialNote": "The companion is trained in slow scholarship, snack ethics, and suspiciously good seminar timing.",
+  "petMessages": [
+    "Pixel approves this methodology, conditionally.",
+    "Good pet. A careful thought has been peer-reviewed.",
+    "Tail wagging in slow scholarship mode.",
+    "Pixel has detected a hidden connection between craft and infrastructure.",
+    "Tiny companion status: deeply interdisciplinary."
+  ],
+  "fetchedThoughts": [
+    "Prompt: What does AI fail to notice about hands, tools, and waiting?",
+    "Prompt: Treat the cloud as a material place with wires, weather, bills, and repair.",
+    "Prompt: Pair sloyd with server maintenance. See what refuses to become seamless.",
+    "Prompt: Ask what a classroom remembers after the device is switched off.",
+    "Prompt: Follow the smallest tool mark. It may know the future better than the dashboard."
+  ],
+  "petPrompt": "Pet five times to earn Pixel's tiny archival trust.",
+  "trustedNote": "Pixel now trusts this collective with a shared Zotero folder.",
+  "fetchNote": "Pixel drops the prompt at your feet, then pretends it was rigorous all along."
+}

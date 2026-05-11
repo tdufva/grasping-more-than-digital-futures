@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+pageTitle: Contact
+current: contact
+description: Contact and join Grasping More-than-Digital Futures, an informal interdisciplinary research collective.
+permalink: contact.html
+---
+<main id="main" class="page-shell contact-layout">
+  <section class="window page-intro">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h1 class="title-text">Contact / Join Us</h1>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <p class="lead">{{ contact.intro }}</p>
+    </div>
+  </section>
+
+  <section class="window contact-window" aria-labelledby="invitation-title">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h2 id="invitation-title" class="title-text">Invitation</h2>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      {% for paragraph in contact.invitationParagraphs %}
+        <p>{{ paragraph }}</p>
+      {% endfor %}
+      <p class="contact-line"><strong>Email:</strong> <a class="text-link" href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+    </div>
+  </section>
+
+  <aside class="window contact-window" aria-labelledby="note-title">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h2 id="note-title" class="title-text">A Gentle Note</h2>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <p>{{ contact.note }}</p>
+      <ul class="check-list">
+        {% for suggestion in contact.suggestions %}
+          <li>{{ suggestion }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</main>

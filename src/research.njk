@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+pageTitle: Research
+current: research
+description: "Research themes for Grasping More-than-Digital Futures: post-digital education, post-AI education, sustainable computing, craft, sloyd, embodiment, feminist data sciences, and critical technology studies."
+permalink: research.html
+---
+<main id="main" class="page-shell">
+  <section class="window page-intro">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h1 class="title-text">Research</h1>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <p class="lead">Our research themes are provisional, porous, and intentionally interdisciplinary. They name shared concerns rather than fixed boundaries.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="themes-title">
+    <div class="section-heading">
+      <p class="system-note">Theme windows</p>
+      <h2 id="themes-title">Research Themes</h2>
+    </div>
+    <div class="theme-grid">
+      {# Edit research themes in src/_data/researchThemes.json. #}
+      {% for theme in researchThemes %}
+        <article class="mini-panel">
+          <h3>{{ theme.title }}</h3>
+          <p>{{ theme.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="window future-panel" aria-labelledby="future-projects-title">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h2 id="future-projects-title" class="title-text">Future Projects, Clusters, Collaborations</h2>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <p>This section can later hold funded projects, thematic clusters, reading groups, workshops, doctoral seminars, publication plans, and collaborations with universities, studios, museums, schools, and independent collectives.</p>
+      <ul class="check-list columns">
+        <li>Project title and summary placeholders</li>
+        <li>Research cluster descriptions</li>
+        <li>Partner institutions and collaborators</li>
+        <li>Calls for participation or shared writing</li>
+      </ul>
+    </div>
+  </section>
+</main>

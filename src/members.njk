@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+pageTitle: Members
+current: members
+description: Members of Grasping More-than-Digital Futures, an informal interdisciplinary research collective.
+permalink: members.html
+---
+<main id="main" class="page-shell">
+  <section class="window page-intro">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h1 class="title-text">Members</h1>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <p class="lead">{{ members.intro }}</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="member-list-title">
+    <div class="section-heading">
+      <p class="system-note">People directory</p>
+      <h2 id="member-list-title">{{ members.heading }}</h2>
+    </div>
+
+    <div class="member-grid">
+      {# Edit members in src/_data/members.json. #}
+      {% for member in members.items %}
+        <article class="window member-card">
+          <div class="title-bar">
+            <span class="window-box" aria-hidden="true"></span>
+            <h3 class="title-text">{{ member.name }}</h3>
+            <span class="window-lines" aria-hidden="true"></span>
+          </div>
+          <div class="window-body">
+            <dl class="profile-list">
+              <dt>Role</dt>
+              <dd>{{ member.role }}</dd>
+              <dt>Institution</dt>
+              <dd>{{ member.institution }}</dd>
+              <dt>Research interests</dt>
+              <dd>{{ member.researchInterests }}</dd>
+            </dl>
+            <p>{{ member.bio }}</p>
+            {% if member.links and member.links.length %}
+              <p class="profile-links">
+                {% for link in member.links %}
+                  <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %}<span aria-hidden="true">|</span>{% endif %}
+                {% endfor %}
+              </p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
