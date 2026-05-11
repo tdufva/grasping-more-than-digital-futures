@@ -74,17 +74,7 @@ Open `src/_data/news.json` and add an item inside `current`:
 }
 ```
 
-Allowed `typeSlug` values used by the filter are:
-
-```text
-seminar
-workshop
-publication
-call
-reading-group
-```
-
-Items are sorted automatically in reverse chronological order.
+Use `YYYY-MM-DD` dates for items that should sort by date. Text dates such as `TBA` are also allowed and will appear before dated items. The `typeSlug` should be a short lower-case label such as `seminar`, `workshop`, `call`, `reading-group`, or `zoom`; the filter menu is generated automatically from the items in this file.
 
 ## Add Literature
 
