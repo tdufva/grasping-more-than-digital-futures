@@ -11,6 +11,7 @@ const message = args
 
 const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 const sitePaths = [
+  ".github",
   ".eleventy.js",
   ".gitignore",
   "assets",
@@ -52,7 +53,7 @@ function git(args, options = {}) {
 const branch = read("git", ["branch", "--show-current"]);
 
 if (branch !== "main") {
-  console.error(`This site publishes from main/docs, but the current branch is ${branch || "unknown"}.`);
+  console.error(`This site publishes from main through GitHub Actions, but the current branch is ${branch || "unknown"}.`);
   console.error("Switch to main before publishing.");
   process.exit(1);
 }
@@ -87,5 +88,5 @@ git(["commit", "-m", message]);
 console.log("\nPushing to GitHub...");
 git(["push", "origin", "main"]);
 
-console.log("\nPublished. GitHub Pages will update from docs/ shortly:");
+console.log("\nPublished. GitHub Actions will rebuild and deploy the site shortly:");
 console.log("https://tdufva.github.io/grasping-more-than-digital-futures/");

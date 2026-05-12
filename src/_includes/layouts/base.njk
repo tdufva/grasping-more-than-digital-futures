@@ -20,14 +20,14 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v={{ site.assetVersion }}">
+  <link rel="stylesheet" href="{{ rootPath or '' }}assets/css/style.css?v={{ site.assetVersion }}">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" aria-label="Site header">
     <nav class="menu-bar" aria-label="Primary navigation">
-      <a class="menu-brand" href="index.html" aria-label="{{ site.title }} home">
+      <a class="menu-brand" href="{{ rootPath or '' }}index.html" aria-label="{{ site.title }} home">
         <span class="pixel-mark" aria-hidden="true"></span>
         <span>{{ site.title }}</span>
       </a>
@@ -35,9 +35,9 @@
         Menu
       </button>
       <ul class="menu-list" id="site-menu">
-        {% for item in site.nav %}
-          <li><a href="{{ item.url }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
-        {% endfor %}
+        {%- for item in site.nav %}
+          <li><a href="{{ rootPath or '' }}{{ item.url }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
       </ul>
       <fieldset class="background-picker" aria-label="Desktop background color">
         <legend>Background</legend>
@@ -70,6 +70,9 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="assets/js/main.js?v={{ site.assetVersion }}"></script>
+  <script src="{{ rootPath or '' }}assets/js/main.js?v={{ site.assetVersion }}"></script>
+  {%- if adminPage %}
+    <script src="{{ rootPath or '' }}assets/js/admin.js?v={{ site.assetVersion }}"></script>
+  {%- endif %}
 </body>
 </html>

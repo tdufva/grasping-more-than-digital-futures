@@ -831,6 +831,23 @@ select {
   font: inherit;
 }
 
+input,
+textarea {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 9px;
+  color: var(--ink);
+  background: var(--surface-light);
+  border: 2px solid var(--line);
+  border-radius: 0;
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.12);
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
 .news-item[hidden] {
   display: none;
 }
@@ -893,6 +910,212 @@ select {
   background: var(--surface-light);
   border: 2px solid var(--line);
   overflow-wrap: anywhere;
+}
+
+.admin-shell {
+  max-width: 1320px;
+}
+
+.admin-command-window .window-body,
+.admin-action-row,
+.admin-tabs,
+.admin-section-title,
+.admin-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-command-window .window-body {
+  flex-direction: column;
+}
+
+.admin-tabs .classic-button[aria-selected="true"],
+.classic-button.is-active {
+  color: var(--surface-light);
+  background: var(--ink);
+  box-shadow: none;
+}
+
+.admin-status {
+  margin: 4px 0 0;
+  padding: 10px 12px;
+  background: var(--surface-light);
+  border: 2px solid var(--line);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+}
+
+.admin-status[data-state="error"] {
+  border-style: dashed;
+}
+
+.admin-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.admin-form-stack,
+.admin-preview-list,
+.admin-validation-panel,
+.admin-preview-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-validation-panel,
+.admin-preview-panel {
+  margin-bottom: 22px;
+}
+
+.admin-validation-panel h3,
+.admin-preview-panel h3,
+.admin-section-title h3,
+.admin-preview-card h4,
+.admin-archive-preview h4 {
+  margin: 0;
+  font-family: var(--font-system);
+  line-height: 1.15;
+}
+
+.admin-validation-panel h3,
+.admin-preview-panel h3,
+.admin-section-title h3 {
+  font-size: 1rem;
+}
+
+.admin-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.admin-field {
+  display: grid;
+  gap: 5px;
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.admin-field textarea,
+.admin-field input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.admin-field small {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.admin-field-wide {
+  grid-column: 1 / -1;
+}
+
+.admin-item {
+  min-width: 0;
+  margin: 0;
+  padding: 14px;
+  background: var(--surface-light);
+  border: 2px solid var(--line);
+  box-shadow: inset -3px -3px 0 var(--surface-dark);
+}
+
+.admin-item legend {
+  padding: 0 6px;
+  background: var(--surface);
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.admin-item-actions {
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.admin-details {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px dotted var(--line);
+}
+
+.admin-details summary {
+  margin-bottom: 10px;
+  font-family: var(--font-system);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-link-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-link-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.admin-preview-card,
+.admin-archive-preview {
+  padding: 14px;
+  background: var(--surface-light);
+  border: 2px solid var(--line);
+  box-shadow:
+    inset -2px -2px 0 var(--surface-dark),
+    inset 2px 2px 0 #ffffff;
+}
+
+.admin-preview-card {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-preview-card p {
+  margin: 0;
+}
+
+.admin-preview-card .member-portrait {
+  max-width: 260px;
+}
+
+.admin-output-field textarea {
+  min-height: 320px;
+  font-family: var(--font-system);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: pre;
+}
+
+.admin-validation-list li {
+  margin-bottom: 8px;
+}
+
+.admin-validation-error::before {
+  background: var(--surface-light);
+  border-style: dashed;
+}
+
+.admin-validation-ok::after {
+  position: absolute;
+  left: 4px;
+  top: 0.15em;
+  width: 5px;
+  height: 9px;
+  content: "";
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .companion-stage {
@@ -1114,7 +1337,9 @@ select {
   .interest-grid,
   .theme-grid,
   .member-grid,
-  .contact-layout {
+  .contact-layout,
+  .admin-editor-grid,
+  .admin-field-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1194,7 +1419,10 @@ select {
   .interest-grid,
   .theme-grid,
   .member-grid,
-  .contact-layout {
+  .contact-layout,
+  .admin-editor-grid,
+  .admin-field-grid,
+  .admin-link-row {
     grid-template-columns: 1fr;
   }
 
@@ -1226,6 +1454,13 @@ select {
 
   .classic-button {
     width: 100%;
+  }
+
+  .admin-action-row,
+  .admin-tabs,
+  .admin-item-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .profile-list {

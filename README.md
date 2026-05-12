@@ -22,6 +22,7 @@ src/
   news.njk
   research.njk
   contact.njk
+  admin.njk
 assets/
   images/
     members/
@@ -29,7 +30,11 @@ assets/
     style.css
   js/
     main.js
+    admin.js
 docs/
+.github/
+  workflows/
+    pages.yml
 CONTENT_GUIDE.md
 README.md
 ```
@@ -83,17 +88,39 @@ Optional longer Markdown pages can be added when useful. See `CONTENT_GUIDE.md` 
 
 The shared visual style is in `assets/css/style.css`. Small interactions, including the mobile menu, news filter, draggable homepage windows, and homepage desktop companion, are in `assets/js/main.js`.
 
+## Browser Editor
+
+The site includes a lightweight static editor at:
+
+```text
+https://tdufva.github.io/grasping-more-than-digital-futures/admin/
+```
+
+Use it to edit member profiles and news/events in form fields, preview the cards, validate required fields, then copy or download the updated JSON. The "Copy JSON + Open GitHub Editor" button copies the generated JSON and opens the correct file in GitHub's web editor. Replace the file contents, commit the change, and GitHub Actions will rebuild and publish the site.
+
+The editor is intentionally static. It does not store passwords, use a database, or save content by itself.
+
 ## Deploy on GitHub Pages
 
-GitHub Pages serves the generated static site from the `docs/` folder on the `main` branch.
+GitHub Pages is deployed by GitHub Actions. Whenever `main` changes, `.github/workflows/pages.yml` installs dependencies, validates JSON, builds the Eleventy site into `docs/`, and deploys that static output to Pages.
 
-After editing content, publish the site with one command:
+For normal content edits in GitHub, you do not need to run a terminal command:
+
+1. Open `/admin/`.
+2. Edit members or news/events.
+3. Copy the generated JSON and open the matching GitHub editor.
+4. Paste over the old JSON file.
+5. Commit the change on `main`.
+
+GitHub Actions will publish the update automatically.
+
+If you edit locally, this helper command is still available:
 
 ```bash
 npm run publish -- "Update members and news"
 ```
 
-That command validates the JSON data, rebuilds `docs/`, commits the website files, and pushes `main` to GitHub. GitHub Pages then publishes the updated `docs/` folder.
+That command validates the JSON data, rebuilds `docs/`, commits the website files, and pushes `main` to GitHub. The push triggers the GitHub Actions deployment.
 
 To preview what would be included without committing or pushing:
 

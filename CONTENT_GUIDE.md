@@ -43,6 +43,18 @@ src/_data/companion.json         Pixel dog messages and fetched prompts
 
 Templates live in `src/*.njk` and `src/_includes/`. Edit those only when changing layout or structure.
 
+## Edit in the Browser
+
+For regular member and news/event edits, open the static admin editor:
+
+```text
+https://tdufva.github.io/grasping-more-than-digital-futures/admin/
+```
+
+The editor lets you use form fields, preview cards, validate required fields, copy JSON, download JSON, and open the matching file in GitHub's web editor. After committing the JSON change in GitHub, GitHub Actions rebuilds and publishes the site automatically.
+
+Because GitHub Pages is static, the editor cannot save directly to the repository. It prepares the JSON file for GitHub.
+
 ## Add a Member
 
 Open `src/_data/members.json` and add a new object inside `items`:
@@ -132,13 +144,15 @@ The CSS controls the Mac OS 7-inspired visual language. The JavaScript controls 
 
 ## Publish Changes
 
-After editing content, publish to GitHub Pages with:
+For normal edits made through GitHub's web editor, commit the changed JSON file on `main`. GitHub Actions will run `npm run check`, build the site, and deploy it to Pages automatically.
+
+If you edit locally, publish to GitHub Pages with:
 
 ```bash
 npm run publish -- "Describe the update"
 ```
 
-The publish command validates the JSON files, rebuilds `docs/`, stages only website files, creates a commit, and pushes to `main`. GitHub Pages will then publish the contents of `docs/`.
+The publish command validates the JSON files, rebuilds `docs/`, stages only website files, creates a commit, and pushes to `main`. The push triggers the GitHub Actions deployment.
 
 To check what would be published without committing or pushing:
 

@@ -1,0 +1,97 @@
+---
+layout: layouts/base.njk
+pageTitle: Admin Editor
+current: admin
+rootPath: ../
+adminPage: true
+description: Browser-based JSON editor for updating members, news, and events on the Grasping More-than-Digital Futures site.
+permalink: admin/index.html
+---
+<main id="main" class="page-shell admin-shell" data-admin-editor>
+  <section class="window page-intro">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h1 class="title-text">Admin Editor</h1>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <p class="lead">A small browser editor for normal content updates. Edit the forms, preview the cards, validate required fields, then copy or download the JSON and commit it through GitHub.</p>
+      <p class="system-note">Static-site rule: this page cannot save by itself. It prepares the file that GitHub Actions will publish after you commit it.</p>
+    </div>
+  </section>
+
+  <section class="window admin-command-window" aria-labelledby="admin-command-title">
+    <div class="title-bar">
+      <span class="window-box" aria-hidden="true"></span>
+      <h2 id="admin-command-title" class="title-text">Choose File</h2>
+      <span class="window-lines" aria-hidden="true"></span>
+    </div>
+    <div class="window-body">
+      <div class="admin-tabs" role="tablist" aria-label="Editable content files">
+        <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="true">Members</button>
+        <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false">News &amp; Events</button>
+      </div>
+      <div class="admin-action-row" aria-label="File actions">
+        <button class="classic-button" type="button" data-admin-action="validate">Validate</button>
+        <button class="classic-button" type="button" data-admin-action="copy">Copy JSON</button>
+        <button class="classic-button" type="button" data-admin-action="download">Download JSON</button>
+        <button class="classic-button" type="button" data-admin-action="github">Copy JSON + Open GitHub Editor</button>
+      </div>
+      <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/members.json</code>.</p>
+    </div>
+  </section>
+
+  <div class="admin-editor-grid">
+    <section class="window admin-edit-window" aria-labelledby="admin-form-title">
+      <div class="title-bar">
+        <span class="window-box" aria-hidden="true"></span>
+        <h2 id="admin-form-title" class="title-text" data-admin-form-title>Members Form</h2>
+        <span class="window-lines" aria-hidden="true"></span>
+      </div>
+      <div class="window-body">
+        <div data-admin-form></div>
+      </div>
+    </section>
+
+    <aside class="window admin-preview-window" aria-labelledby="admin-preview-title">
+      <div class="title-bar">
+        <span class="window-box" aria-hidden="true"></span>
+        <h2 id="admin-preview-title" class="title-text">Preview + Export</h2>
+        <span class="window-lines" aria-hidden="true"></span>
+      </div>
+      <div class="window-body">
+        <section class="admin-validation-panel" aria-labelledby="admin-validation-title">
+          <h3 id="admin-validation-title">Validation</h3>
+          <ul class="compact-list admin-validation-list" data-admin-validation></ul>
+        </section>
+
+        <section class="admin-preview-panel" aria-labelledby="admin-live-preview-title">
+          <h3 id="admin-live-preview-title">Card Preview</h3>
+          <div data-admin-preview></div>
+        </section>
+
+        <label class="admin-field admin-output-field">
+          <span>Generated JSON</span>
+          <textarea data-admin-output rows="16" readonly spellcheck="false"></textarea>
+        </label>
+      </div>
+    </aside>
+  </div>
+
+  <script type="application/json" id="admin-members-data">{{ members | json | safe }}</script>
+  <script type="application/json" id="admin-news-data">{{ news | json | safe }}</script>
+  <script type="application/json" id="admin-file-config">{
+    "members": {
+      "label": "Members",
+      "filePath": "src/_data/members.json",
+      "downloadName": "members.json",
+      "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/members.json"
+    },
+    "news": {
+      "label": "News & Events",
+      "filePath": "src/_data/news.json",
+      "downloadName": "news.json",
+      "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/news.json"
+    }
+  }</script>
+</main>
