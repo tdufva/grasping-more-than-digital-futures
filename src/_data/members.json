@@ -6,6 +6,12 @@
       "name": "Tomi Slotte Dufva",
       "role": "Assistant Professor in Arts Education; group coordinator",
       "institution": "Aalto University, the School of Arts, Design and Architecture, Department of Art and Design",
+      "image": {
+        "src": "assets/images/members/tomi-slotte-dufva.jpg",
+        "alt": "Portrait of Tomi Slotte Dufva wearing translucent glasses",
+        "width": 900,
+        "height": 1200
+      },
       "researchInterests": "Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education",
       "bio": "Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.",
       "links": [

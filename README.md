@@ -23,6 +23,8 @@ src/
   research.njk
   contact.njk
 assets/
+  images/
+    members/
   css/
     style.css
   js/

@@ -33,6 +33,18 @@ permalink: members.html
             <span class="window-lines" aria-hidden="true"></span>
           </div>
           <div class="window-body">
+            <figure class="member-portrait">
+              {% if member.image and member.image.src %}
+                <img
+                  src="{{ member.image.src }}"
+                  alt="{{ member.image.alt or 'Portrait of ' + member.name }}"
+                  loading="lazy"
+                  width="{{ member.image.width or 900 }}"
+                  height="{{ member.image.height or 900 }}">
+              {% else %}
+                <span class="member-portrait-placeholder" role="img" aria-label="Portrait placeholder for {{ member.name }}"></span>
+              {% endif %}
+            </figure>
             <dl class="profile-list">
               <dt>Role</dt>
               <dd>{{ member.role }}</dd>

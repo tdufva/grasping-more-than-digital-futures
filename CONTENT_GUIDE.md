@@ -52,6 +52,12 @@ Open `src/_data/members.json` and add a new object inside `items`:
   "name": "Name Surname",
   "role": "Doctoral Researcher",
   "institution": "University / affiliation",
+  "image": {
+    "src": "assets/images/members/name-surname.jpg",
+    "alt": "Portrait of Name Surname",
+    "width": 900,
+    "height": 1200
+  },
   "researchInterests": "Post-digital education, craft, AI, culture",
   "bio": "Short biography in one paragraph.",
   "links": [
@@ -60,6 +66,8 @@ Open `src/_data/members.json` and add a new object inside `items`:
   ]
 }
 ```
+
+Portraits are optional. Put member images in `assets/images/members/`, keep them reasonably small for the web, and include clear alt text.
 
 Keep commas between member objects. The final object in the list should not have a trailing comma.
 
