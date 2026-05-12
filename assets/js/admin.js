@@ -2,6 +2,14 @@
   const editor = document.querySelector("[data-admin-editor]");
   if (!editor) return;
 
+  const adminPasswordHash = "669f5a828b627d7c43dc0c07c91cc55e6270e16b8b432e151b9f5c0670e23689";
+  const adminSessionKey = "gmdf-admin-unlocked-v1";
+  const lockPanel = editor.querySelector("[data-admin-lock]");
+  const adminContent = editor.querySelector("[data-admin-content]");
+  const loginForm = editor.querySelector("[data-admin-login]");
+  const passwordInput = editor.querySelector("[data-admin-password]");
+  const lockStatus = editor.querySelector("[data-admin-lock-status]");
+
   const clone = (value) => JSON.parse(JSON.stringify(value || {}));
   const parseJsonScript = (id, fallback) => {
     const element = document.getElementById(id);
@@ -29,6 +37,48 @@
   const output = editor.querySelector("[data-admin-output]");
   const status = editor.querySelector("[data-admin-status]");
   const tabButtons = Array.from(editor.querySelectorAll("[data-admin-tab]"));
+
+  const setLockStatus = (message, isError) => {
+    if (!lockStatus) return;
+    lockStatus.textContent = message;
+    lockStatus.dataset.state = isError ? "error" : "ok";
+  };
+
+  const digestPassword = async (value) => {
+    if (!window.crypto?.subtle || !window.TextEncoder) {
+      throw new Error("Password checking needs a modern browser with Web Crypto support.");
+    }
+
+    const bytes = new TextEncoder().encode(value);
+    const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+  };
+
+  const rememberUnlock = () => {
+    try {
+      window.sessionStorage.setItem(adminSessionKey, "true");
+    } catch (error) {
+      // Unlocking should still work for the current page if session storage is unavailable.
+    }
+  };
+
+  const forgetUnlock = () => {
+    try {
+      window.sessionStorage.removeItem(adminSessionKey);
+    } catch (error) {
+      // Nothing to clear if session storage is unavailable.
+    }
+  };
+
+  const hasStoredUnlock = () => {
+    try {
+      return window.sessionStorage.getItem(adminSessionKey) === "true";
+    } catch (error) {
+      return false;
+    }
+  };
 
   const escapeHtml = (value) => String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -432,6 +482,25 @@
     renderOutput();
   };
 
+  const setUnlocked = (isUnlocked) => {
+    if (lockPanel) lockPanel.hidden = isUnlocked;
+    if (adminContent) adminContent.hidden = !isUnlocked;
+
+    if (isUnlocked) {
+      rememberUnlock();
+      renderAll();
+      setStatus("Admin editor unlocked for this browser session.", false);
+      return;
+    }
+
+    forgetUnlock();
+    if (passwordInput) {
+      passwordInput.value = "";
+      window.setTimeout(() => passwordInput.focus(), 0);
+    }
+    setLockStatus("Enter the shared admin password to open the editor.", false);
+  };
+
   const renderLivePanels = () => {
     renderValidation();
     renderPreview();
@@ -556,6 +625,12 @@
     const button = event.target.closest("[data-admin-action]");
     if (!button) return;
     const action = button.dataset.adminAction;
+
+    if (action === "lock") {
+      setUnlocked(false);
+      return;
+    }
+
     const messages = validateActive();
 
     if (action === "validate") {
@@ -597,5 +672,22 @@
   formMount?.addEventListener("click", handleFormAction);
   editor.addEventListener("click", handleAdminAction);
 
-  renderAll();
+  loginForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const password = passwordInput?.value || "";
+
+    try {
+      const digest = await digestPassword(password);
+      if (digest === adminPasswordHash) {
+        setLockStatus("Password accepted.", false);
+        setUnlocked(true);
+      } else {
+        setLockStatus("That password did not work.", true);
+      }
+    } catch (error) {
+      setLockStatus(error.message || "Password checking is unavailable in this browser.", true);
+    }
+  });
+
+  setUnlocked(hasStoredUnlock());
 })();

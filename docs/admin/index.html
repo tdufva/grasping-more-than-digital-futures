@@ -20,7 +20,7 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=2026-05-12-admin-actions-editor">
+  <link rel="stylesheet" href="../assets/css/style.css?v=2026-05-12-admin-password">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -76,62 +76,84 @@
     </div>
   </section>
 
-  <section class="window admin-command-window" aria-labelledby="admin-command-title">
+  <section class="window admin-lock-window" aria-labelledby="admin-lock-title" data-admin-lock>
     <div class="title-bar">
       <span class="window-box" aria-hidden="true"></span>
-      <h2 id="admin-command-title" class="title-text">Choose File</h2>
+      <h2 id="admin-lock-title" class="title-text">Access</h2>
       <span class="window-lines" aria-hidden="true"></span>
     </div>
     <div class="window-body">
-      <div class="admin-tabs" role="tablist" aria-label="Editable content files">
-        <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="true">Members</button>
-        <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false">News &amp; Events</button>
-      </div>
-      <div class="admin-action-row" aria-label="File actions">
-        <button class="classic-button" type="button" data-admin-action="validate">Validate</button>
-        <button class="classic-button" type="button" data-admin-action="copy">Copy JSON</button>
-        <button class="classic-button" type="button" data-admin-action="download">Download JSON</button>
-        <button class="classic-button" type="button" data-admin-action="github">Copy JSON + Open GitHub Editor</button>
-      </div>
-      <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/members.json</code>.</p>
+      <form class="admin-lock-form" data-admin-login>
+        <label class="admin-field">
+          <span>Password</span>
+          <input type="password" data-admin-password autocomplete="current-password">
+        </label>
+        <button class="classic-button" type="submit">Unlock Admin</button>
+      </form>
+      <p class="admin-status" data-admin-lock-status aria-live="polite">Enter the shared admin password to open the editor.</p>
+      <p class="system-note">This is a lightweight static-site gate. GitHub still controls who can commit changes.</p>
     </div>
   </section>
 
-  <div class="admin-editor-grid">
-    <section class="window admin-edit-window" aria-labelledby="admin-form-title">
+  <div data-admin-content hidden>
+    <section class="window admin-command-window" aria-labelledby="admin-command-title">
       <div class="title-bar">
         <span class="window-box" aria-hidden="true"></span>
-        <h2 id="admin-form-title" class="title-text" data-admin-form-title>Members Form</h2>
+        <h2 id="admin-command-title" class="title-text">Choose File</h2>
         <span class="window-lines" aria-hidden="true"></span>
       </div>
       <div class="window-body">
-        <div data-admin-form></div>
+        <div class="admin-tabs" role="tablist" aria-label="Editable content files">
+          <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="true">Members</button>
+          <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false">News &amp; Events</button>
+        </div>
+        <div class="admin-action-row" aria-label="File actions">
+          <button class="classic-button" type="button" data-admin-action="validate">Validate</button>
+          <button class="classic-button" type="button" data-admin-action="copy">Copy JSON</button>
+          <button class="classic-button" type="button" data-admin-action="download">Download JSON</button>
+          <button class="classic-button" type="button" data-admin-action="github">Copy JSON + Open GitHub Editor</button>
+          <button class="classic-button" type="button" data-admin-action="lock">Lock Admin</button>
+        </div>
+        <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/members.json</code>.</p>
       </div>
     </section>
 
-    <aside class="window admin-preview-window" aria-labelledby="admin-preview-title">
-      <div class="title-bar">
-        <span class="window-box" aria-hidden="true"></span>
-        <h2 id="admin-preview-title" class="title-text">Preview + Export</h2>
-        <span class="window-lines" aria-hidden="true"></span>
-      </div>
-      <div class="window-body">
-        <section class="admin-validation-panel" aria-labelledby="admin-validation-title">
-          <h3 id="admin-validation-title">Validation</h3>
-          <ul class="compact-list admin-validation-list" data-admin-validation></ul>
-        </section>
+    <div class="admin-editor-grid">
+      <section class="window admin-edit-window" aria-labelledby="admin-form-title">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 id="admin-form-title" class="title-text" data-admin-form-title>Members Form</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <div data-admin-form></div>
+        </div>
+      </section>
 
-        <section class="admin-preview-panel" aria-labelledby="admin-live-preview-title">
-          <h3 id="admin-live-preview-title">Card Preview</h3>
-          <div data-admin-preview></div>
-        </section>
+      <aside class="window admin-preview-window" aria-labelledby="admin-preview-title">
+        <div class="title-bar">
+          <span class="window-box" aria-hidden="true"></span>
+          <h2 id="admin-preview-title" class="title-text">Preview + Export</h2>
+          <span class="window-lines" aria-hidden="true"></span>
+        </div>
+        <div class="window-body">
+          <section class="admin-validation-panel" aria-labelledby="admin-validation-title">
+            <h3 id="admin-validation-title">Validation</h3>
+            <ul class="compact-list admin-validation-list" data-admin-validation></ul>
+          </section>
 
-        <label class="admin-field admin-output-field">
-          <span>Generated JSON</span>
-          <textarea data-admin-output rows="16" readonly spellcheck="false"></textarea>
-        </label>
-      </div>
-    </aside>
+          <section class="admin-preview-panel" aria-labelledby="admin-live-preview-title">
+            <h3 id="admin-live-preview-title">Card Preview</h3>
+            <div data-admin-preview></div>
+          </section>
+
+          <label class="admin-field admin-output-field">
+            <span>Generated JSON</span>
+            <textarea data-admin-output rows="16" readonly spellcheck="false"></textarea>
+          </label>
+        </div>
+      </aside>
+    </div>
   </div>
 
   <script type="application/json" id="admin-members-data">{"intro":"The collective is imagined as a loose international network of researchers, artists, educators, and scholars.","heading":"Members and Coordinators","items":[{"name":"Tomi Slotte Dufva","role":"Assistant Professor in Arts Education; group coordinator","institution":"Aalto University, the School of Arts, Design and Architecture, Department of Art and Design","image":{"src":"assets/images/members/tomi-slotte-dufva.jpg","alt":"Portrait of Tomi Slotte Dufva wearing translucent glasses","width":900,"height":1200},"researchInterests":"Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education","bio":"Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.","links":[{"label":"Website","url":"https://www.thispagehassomeissues.com"},{"label":"Aalto Research","url":"https://research.aalto.fi/en/persons/tomi-slotte-dufva/"},{"label":"Google Scholar","url":"https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi"},{"label":"LinkedIn","url":"https://www.linkedin.com/in/tomidufva?originalSubdomain=fi"},{"label":"Mastodon","url":"https://mastodon.nu/@tsdufva"}]},{"name":"Member Placeholder 02","role":"Postdoctoral Researcher","institution":"Research institute placeholder","researchInterests":"Post-AI education, critical data studies, feminist data sciences","bio":"Studies how AI systems shape knowledge practices, pedagogical agency, and the everyday politics of data in educational settings.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 03","role":"University Lecturer","institution":"Faculty placeholder","researchInterests":"Sloyd, teacher education, more-than-digital pedagogies","bio":"Works with teacher education, craft traditions, and experimental pedagogies that connect material making with cultural analysis.","links":[{"label":"member03@example.org","url":"mailto:member03@example.org"}]},{"name":"Member Placeholder 04","role":"Professor","institution":"School of arts / education placeholder","researchInterests":"Critical technology studies, culture, art, ecological thinking","bio":"Develops interdisciplinary research environments around artistic inquiry, cultural critique, and technological imaginaries.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 05","role":"Independent Researcher","institution":"Independent / artist-researcher placeholder","researchInterests":"Embodiment, repair cultures, artistic research methods","bio":"Combines experimental practice, writing, and public pedagogy to examine bodies, tools, infrastructures, and care.","links":[{"label":"member05@example.org","url":"mailto:member05@example.org"}]},{"name":"Member Placeholder 06","role":"Artist-Educator","institution":"Collective / studio placeholder","researchInterests":"Digital craft, workshops, participatory methods, media archaeology","bio":"Facilitates collaborative workshops that use old and new technologies to ask how futures are made, maintained, and refused.","links":[{"label":"Website placeholder","url":"https://example.org"}]}]}</script>
@@ -161,7 +183,7 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="../assets/js/main.js?v=2026-05-12-admin-actions-editor"></script>
-    <script src="../assets/js/admin.js?v=2026-05-12-admin-actions-editor"></script>
+  <script src="../assets/js/main.js?v=2026-05-12-admin-password"></script>
+    <script src="../assets/js/admin.js?v=2026-05-12-admin-password"></script>
 </body>
 </html>

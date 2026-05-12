@@ -916,6 +916,17 @@ textarea {
   max-width: 1320px;
 }
 
+.admin-lock-window {
+  max-width: 720px;
+}
+
+.admin-lock-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+
 .admin-command-window .window-body,
 .admin-action-row,
 .admin-tabs,
@@ -1422,7 +1433,8 @@ textarea {
   .contact-layout,
   .admin-editor-grid,
   .admin-field-grid,
-  .admin-link-row {
+  .admin-link-row,
+  .admin-lock-form {
     grid-template-columns: 1fr;
   }
 
