@@ -131,7 +131,7 @@
   const desktop = document.querySelector(".desktop-grid");
   const resetWindows = document.querySelector("[data-reset-windows]");
   const freeLayoutQuery = window.matchMedia("(min-width: 761px)");
-  const layoutStorageKey = "gmdf-window-layout-v1";
+  const layoutStorageKey = "gmdf-window-layout-v2";
 
   if (desktop) {
     const desktopWindows = Array.from(desktop.querySelectorAll(":scope > .window[data-window-id]"));

@@ -13,7 +13,7 @@
   --max: 1180px;
   --gutter: clamp(16px, 3vw, 32px);
   --font-body: Geneva, Verdana, "Lucida Grande", Arial, sans-serif;
-  --font-system: "Courier New", Courier, monospace;
+  --font-system: Monaco, "Andale Mono", "Lucida Console", "Courier New", monospace;
 }
 
 :root[data-background="blueprint"] {
@@ -300,9 +300,9 @@ a:hover {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
   grid-template-areas:
-    "welcome themes"
-    "welcome events"
     "welcome companion"
+    "welcome themes"
+    "about events"
     "about join";
   gap: 18px;
   align-items: start;
@@ -457,6 +457,7 @@ h1 {
   font-family: var(--font-system);
   font-size: clamp(2rem, 5vw, 4.7rem);
   line-height: 0.98;
+  font-weight: 700;
 }
 
 .subtitle {
