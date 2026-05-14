@@ -8,7 +8,7 @@
   <script>
     (function () {
       var fallback = "classic";
-      var choices = ["classic", "blueprint", "sage", "paper"];
+      var choices = ["classic", "blueprint", "sage", "paper", "plain"];
       var saved = fallback;
 
       try {
@@ -39,7 +39,7 @@
           <li><a href="{{ rootPath or '' }}{{ item.url }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
         {%- endfor %}
       </ul>
-      <fieldset class="background-picker" aria-label="Desktop background color">
+      <fieldset class="background-picker" aria-label="Desktop background style">
         <legend>Background</legend>
         <button class="background-swatch background-swatch-classic" type="button" data-background-choice="classic" aria-pressed="true" title="Classic grey">
           <span class="visually-hidden">Classic grey background</span>
@@ -52,6 +52,9 @@
         </button>
         <button class="background-swatch background-swatch-paper" type="button" data-background-choice="paper" aria-pressed="false" title="Warm paper">
           <span class="visually-hidden">Warm paper background</span>
+        </button>
+        <button class="background-swatch background-swatch-plain" type="button" data-background-choice="plain" aria-pressed="false" title="Plain high contrast">
+          <span class="visually-hidden">Plain high contrast background without texture</span>
         </button>
       </fieldset>
       <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">

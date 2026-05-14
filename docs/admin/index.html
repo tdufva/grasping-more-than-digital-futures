@@ -8,7 +8,7 @@
   <script>
     (function () {
       var fallback = "classic";
-      var choices = ["classic", "blueprint", "sage", "paper"];
+      var choices = ["classic", "blueprint", "sage", "paper", "plain"];
       var saved = fallback;
 
       try {
@@ -20,7 +20,7 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=2026-05-12-admin-password">
+  <link rel="stylesheet" href="../assets/css/style.css?v=2026-05-13-accessibility">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,12 +37,12 @@
       <ul class="menu-list" id="site-menu">
           <li><a href="../index.html">Home</a></li>
           <li><a href="../members.html">Members</a></li>
-          <li><a href="../news.html">News &amp; Events</a></li>
+          <li><a href="../news.html">News & Events</a></li>
           <li><a href="../research.html">Research</a></li>
           <li><a href="../contact.html">Contact</a></li>
           <li><a href="../admin/" aria-current="page">Admin</a></li>
       </ul>
-      <fieldset class="background-picker" aria-label="Desktop background color">
+      <fieldset class="background-picker" aria-label="Desktop background style">
         <legend>Background</legend>
         <button class="background-swatch background-swatch-classic" type="button" data-background-choice="classic" aria-pressed="true" title="Classic grey">
           <span class="visually-hidden">Classic grey background</span>
@@ -55,6 +55,9 @@
         </button>
         <button class="background-swatch background-swatch-paper" type="button" data-background-choice="paper" aria-pressed="false" title="Warm paper">
           <span class="visually-hidden">Warm paper background</span>
+        </button>
+        <button class="background-swatch background-swatch-plain" type="button" data-background-choice="plain" aria-pressed="false" title="Plain high contrast">
+          <span class="visually-hidden">Plain high contrast background without texture</span>
         </button>
       </fieldset>
       <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">
@@ -156,7 +159,7 @@
     </div>
   </div>
 
-  <script type="application/json" id="admin-members-data">{"intro":"The collective is imagined as a loose international network of researchers, artists, educators, and scholars.","heading":"Members and Coordinators","items":[{"name":"Tomi Slotte Dufva","role":"Assistant Professor in Arts Education; group coordinator","institution":"Aalto University, the School of Arts, Design and Architecture, Department of Art and Design","image":{"src":"assets/images/members/tomi-slotte-dufva.jpg","alt":"Portrait of Tomi Slotte Dufva wearing translucent glasses","width":900,"height":1200},"researchInterests":"Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education","bio":"Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.","links":[{"label":"Website","url":"https://www.thispagehassomeissues.com"},{"label":"Aalto Research","url":"https://research.aalto.fi/en/persons/tomi-slotte-dufva/"},{"label":"Google Scholar","url":"https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi"},{"label":"LinkedIn","url":"https://www.linkedin.com/in/tomidufva?originalSubdomain=fi"},{"label":"Mastodon","url":"https://mastodon.nu/@tsdufva"}]},{"name":"Member Placeholder 02","role":"Postdoctoral Researcher","institution":"Research institute placeholder","researchInterests":"Post-AI education, critical data studies, feminist data sciences","bio":"Studies how AI systems shape knowledge practices, pedagogical agency, and the everyday politics of data in educational settings.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 03","role":"University Lecturer","institution":"Faculty placeholder","researchInterests":"Sloyd, teacher education, more-than-digital pedagogies","bio":"Works with teacher education, craft traditions, and experimental pedagogies that connect material making with cultural analysis.","links":[{"label":"member03@example.org","url":"mailto:member03@example.org"}]},{"name":"Member Placeholder 04","role":"Professor","institution":"School of arts / education placeholder","researchInterests":"Critical technology studies, culture, art, ecological thinking","bio":"Develops interdisciplinary research environments around artistic inquiry, cultural critique, and technological imaginaries.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 05","role":"Independent Researcher","institution":"Independent / artist-researcher placeholder","researchInterests":"Embodiment, repair cultures, artistic research methods","bio":"Combines experimental practice, writing, and public pedagogy to examine bodies, tools, infrastructures, and care.","links":[{"label":"member05@example.org","url":"mailto:member05@example.org"}]},{"name":"Member Placeholder 06","role":"Artist-Educator","institution":"Collective / studio placeholder","researchInterests":"Digital craft, workshops, participatory methods, media archaeology","bio":"Facilitates collaborative workshops that use old and new technologies to ask how futures are made, maintained, and refused.","links":[{"label":"Website placeholder","url":"https://example.org"}]}]}</script>
+  <script type="application/json" id="admin-members-data">{"intro":"The collective is an international network of researchers working in the fields of education, art, craft, culture & technology","heading":"Members","items":[{"name":"Tomi Slotte Dufva","role":"Assistant Professor in Arts Education; group coordinator","institution":"Aalto University, the School of Arts, Design and Architecture, Department of Art and Design","image":{"src":"assets/images/members/tomi-slotte-dufva.jpg","alt":"Portrait of Tomi Slotte Dufva wearing translucent glasses","width":900,"height":1200},"researchInterests":"Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education","bio":"Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.","links":[{"label":"Website","url":"https://www.thispagehassomeissues.com"},{"label":"Aalto Research","url":"https://research.aalto.fi/en/persons/tomi-slotte-dufva/"},{"label":"Google Scholar","url":"https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi"},{"label":"LinkedIn","url":"https://www.linkedin.com/in/tomidufva?originalSubdomain=fi"},{"label":"Mastodon","url":"https://mastodon.nu/@tsdufva"}]},{"name":"Member Placeholder 02","role":"Postdoctoral Researcher","institution":"Research institute placeholder","researchInterests":"Post-AI education, critical data studies, feminist data sciences","bio":"Studies how AI systems shape knowledge practices, pedagogical agency, and the everyday politics of data in educational settings.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 03","role":"University Lecturer","institution":"Faculty placeholder","researchInterests":"Sloyd, teacher education, more-than-digital pedagogies","bio":"Works with teacher education, craft traditions, and experimental pedagogies that connect material making with cultural analysis.","links":[{"label":"member03@example.org","url":"mailto:member03@example.org"}]},{"name":"Member Placeholder 04","role":"Professor","institution":"School of arts / education placeholder","researchInterests":"Critical technology studies, culture, art, ecological thinking","bio":"Develops interdisciplinary research environments around artistic inquiry, cultural critique, and technological imaginaries.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 05","role":"Independent Researcher","institution":"Independent / artist-researcher placeholder","researchInterests":"Embodiment, repair cultures, artistic research methods","bio":"Combines experimental practice, writing, and public pedagogy to examine bodies, tools, infrastructures, and care.","links":[{"label":"member05@example.org","url":"mailto:member05@example.org"}]},{"name":"Member Placeholder 06","role":"Artist-Educator","institution":"Collective / studio placeholder","researchInterests":"Digital craft, workshops, participatory methods, media archaeology","bio":"Facilitates collaborative workshops that use old and new technologies to ask how futures are made, maintained, and refused.","links":[{"label":"Website placeholder","url":"https://example.org"}]}]}</script>
   <script type="application/json" id="admin-news-data">{"intro":"A place for seminars, workshops, reading groups, conference sessions, calls for papers, publications, and small announcements from the collective.","current":[{"date":"TBA","title":"Founding meeting for the group","type":"Zoom","typeSlug":"zoom","description":"Online meeting on establishing the group","url":"","linkLabel":"Link placeholder"},{"date":"TBA","title":"Workshops, seminars, calls for papers etc. Are awaiting in the future!","type":"Workshop","typeSlug":"workshop","description":"A hands-on placeholder workshop for exploring tool traces, sensors, repair, textiles, code, and more-than-digital studio practices.","url":"","linkLabel":"Link placeholder"}],"archive":[{"date":"2025-11-20","description":"Placeholder conference session on craft, platforms, and public pedagogy."},{"date":"2025-09-12","description":"Placeholder reading note on feminist data science and embodied methods."}]}</script>
   <script type="application/json" id="admin-file-config">{
     "members": {
@@ -183,7 +186,7 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="../assets/js/main.js?v=2026-05-12-admin-password"></script>
-    <script src="../assets/js/admin.js?v=2026-05-12-admin-password"></script>
+  <script src="../assets/js/main.js?v=2026-05-13-accessibility"></script>
+    <script src="../assets/js/admin.js?v=2026-05-13-accessibility"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
   <script>
     (function () {
       var fallback = "classic";
-      var choices = ["classic", "blueprint", "sage", "paper"];
+      var choices = ["classic", "blueprint", "sage", "paper", "plain"];
       var saved = fallback;
 
       try {
@@ -20,7 +20,7 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-12-admin-password">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-13-accessibility">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,12 +37,12 @@
       <ul class="menu-list" id="site-menu">
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="members.html">Members</a></li>
-          <li><a href="news.html">News &amp; Events</a></li>
+          <li><a href="news.html">News & Events</a></li>
           <li><a href="research.html">Research</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="admin/">Admin</a></li>
       </ul>
-      <fieldset class="background-picker" aria-label="Desktop background color">
+      <fieldset class="background-picker" aria-label="Desktop background style">
         <legend>Background</legend>
         <button class="background-swatch background-swatch-classic" type="button" data-background-choice="classic" aria-pressed="true" title="Classic grey">
           <span class="visually-hidden">Classic grey background</span>
@@ -55,6 +55,9 @@
         </button>
         <button class="background-swatch background-swatch-paper" type="button" data-background-choice="paper" aria-pressed="false" title="Warm paper">
           <span class="visually-hidden">Warm paper background</span>
+        </button>
+        <button class="background-swatch background-swatch-plain" type="button" data-background-choice="plain" aria-pressed="false" title="Plain high contrast">
+          <span class="visually-hidden">Plain high contrast background without texture</span>
         </button>
       </fieldset>
       <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">
@@ -213,7 +216,7 @@
           <span class="window-lines" aria-hidden="true"></span>
         </div>
         <div class="window-body">
-          <p>We welcome doctoral &amp; postdoctoral researchers, university lecturers, professors, and other researchers working across art, craft, sloyd, education, technology, culture, and related fields.</p>
+          <p>We welcome doctoral & postdoctoral researchers, university lecturers, professors, and other researchers working across art, craft, sloyd, education, technology, culture, and related fields.</p>
           <a class="classic-button small" href="contact.html">Contact the group</a>
         </div>
       </article>
@@ -258,6 +261,6 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="assets/js/main.js?v=2026-05-12-admin-password"></script>
+  <script src="assets/js/main.js?v=2026-05-13-accessibility"></script>
 </body>
 </html>

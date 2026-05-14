@@ -29,15 +29,15 @@ permalink: contact.html
       {% endfor %}
       <div class="contact-action-panel" data-protected-email data-ready-message="{{ contact.emailReadyMessage }}">
         <p class="system-note">Protected contact</p>
-        <button class="classic-button contact-primary-button" type="button" data-email-reveal aria-pressed="false">
+        <button class="classic-button contact-primary-button" type="button" data-email-reveal aria-expanded="false" aria-controls="protected-email-actions protected-email-status">
           {{ contact.emailActionLabel }}
         </button>
         <p class="contact-help" id="protected-email-help">{{ contact.emailHelp }}</p>
-        <div class="contact-actions" aria-describedby="protected-email-help">
-          <a class="classic-button small contact-email-link" href="#" data-email-open hidden>{{ contact.emailOpenLabel }}</a>
-          <button class="classic-button small" type="button" data-email-copy hidden>{{ contact.emailCopyLabel }}</button>
+        <div class="contact-actions" id="protected-email-actions" data-email-actions aria-describedby="protected-email-help" hidden>
+          <a class="classic-button small contact-email-link" data-email-open>{{ contact.emailOpenLabel }}</a>
+          <button class="classic-button small" type="button" data-email-copy>{{ contact.emailCopyLabel }}</button>
         </div>
-        <p class="contact-line" aria-live="polite">
+        <p class="contact-line" id="protected-email-status" aria-live="polite">
           <strong>Status:</strong> <span data-email-output>{{ contact.emailFallback }}</span>
         </p>
         <noscript>

@@ -64,9 +64,11 @@
 
   if (protectedEmail) {
     const revealButton = protectedEmail.querySelector("[data-email-reveal]");
+    const actionPanel = protectedEmail.querySelector("[data-email-actions]");
     const openLink = protectedEmail.querySelector("[data-email-open]");
     const copyButton = protectedEmail.querySelector("[data-email-copy]");
     const output = protectedEmail.querySelector("[data-email-output]");
+    const fallbackText = output?.textContent || "";
     const protectedCodes = [123, 118, 116, 112, 53, 122, 115, 118, 123, 123, 108, 107, 124, 109, 125, 104, 71, 104, 104, 115, 123, 118, 53, 109, 112];
     const protectedShift = 7;
     let address = "";
@@ -83,7 +85,9 @@
       const subject = encodeURIComponent("Grasping More-than-Digital Futures");
       if (openLink) {
         openLink.href = `mailto:${emailAddress}?subject=${subject}`;
-        openLink.hidden = false;
+      }
+      if (actionPanel) {
+        actionPanel.hidden = false;
       }
       if (copyButton) {
         copyButton.hidden = !navigator.clipboard;
@@ -93,7 +97,7 @@
       }
       if (revealButton) {
         revealButton.textContent = "Contact options ready";
-        revealButton.setAttribute("aria-pressed", "true");
+        revealButton.setAttribute("aria-expanded", "true");
       }
       return emailAddress;
     };
@@ -109,23 +113,36 @@
         await navigator.clipboard.writeText(emailAddress);
         if (output) output.textContent = "Email address copied to clipboard.";
       } catch (error) {
-        if (output) output.textContent = "Copy did not work. Use the email app button, or write the softened address shown here.";
+        if (output) output.textContent = `Copy did not work. Use the email app button, or write: ${fallbackText}.`;
       }
     });
   }
 
   const newsFilter = document.querySelector("[data-news-filter]");
+  const newsFilterStatus = document.querySelector("[data-news-filter-status]");
   const newsItems = document.querySelectorAll("[data-news-type]");
 
   // News items are edited in src/_data/news.json; this filter only changes the visible set.
   if (newsFilter && newsItems.length > 0) {
-    newsFilter.addEventListener("change", () => {
+    const updateNewsFilter = () => {
       const selectedType = newsFilter.value;
+      let visibleCount = 0;
       newsItems.forEach((item) => {
         const shouldShow = selectedType === "all" || item.dataset.newsType === selectedType;
         item.hidden = !shouldShow;
+        if (shouldShow) visibleCount += 1;
       });
-    });
+      if (newsFilterStatus) {
+        const selectedLabel = newsFilter.options[newsFilter.selectedIndex]?.textContent.trim() || "selected";
+        const noun = visibleCount === 1 ? "item" : "items";
+        newsFilterStatus.textContent = selectedType === "all"
+          ? `Showing all ${visibleCount} current notices.`
+          : `Showing ${visibleCount} ${selectedLabel} ${noun}.`;
+      }
+    };
+
+    newsFilter.addEventListener("change", updateNewsFilter);
+    updateNewsFilter();
   }
 
   const desktop = document.querySelector(".desktop-grid");

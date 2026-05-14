@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="News, events, workshops, seminars, reading groups, calls, and announcements from Grasping More-than-Digital Futures.">
-  <title>News &amp; Events | Grasping More-than-Digital Futures</title>
+  <title>News & Events | Grasping More-than-Digital Futures</title>
   <script>
     (function () {
       var fallback = "classic";
-      var choices = ["classic", "blueprint", "sage", "paper"];
+      var choices = ["classic", "blueprint", "sage", "paper", "plain"];
       var saved = fallback;
 
       try {
@@ -20,7 +20,7 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-12-admin-password">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-05-13-accessibility">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,12 +37,12 @@
       <ul class="menu-list" id="site-menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="members.html">Members</a></li>
-          <li><a href="news.html" aria-current="page">News &amp; Events</a></li>
+          <li><a href="news.html" aria-current="page">News & Events</a></li>
           <li><a href="research.html">Research</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="admin/">Admin</a></li>
       </ul>
-      <fieldset class="background-picker" aria-label="Desktop background color">
+      <fieldset class="background-picker" aria-label="Desktop background style">
         <legend>Background</legend>
         <button class="background-swatch background-swatch-classic" type="button" data-background-choice="classic" aria-pressed="true" title="Classic grey">
           <span class="visually-hidden">Classic grey background</span>
@@ -55,6 +55,9 @@
         </button>
         <button class="background-swatch background-swatch-paper" type="button" data-background-choice="paper" aria-pressed="false" title="Warm paper">
           <span class="visually-hidden">Warm paper background</span>
+        </button>
+        <button class="background-swatch background-swatch-plain" type="button" data-background-choice="plain" aria-pressed="false" title="Plain high contrast">
+          <span class="visually-hidden">Plain high contrast background without texture</span>
         </button>
       </fieldset>
       <button class="window-reset" type="button" data-reset-windows hidden title="Reset window layout" aria-label="Reset window layout">
@@ -81,17 +84,20 @@
         <p class="system-note">Reverse chronological</p>
         <h2 id="news-list-title">Current Notices</h2>
       </div>
-      <label class="filter-control" for="news-filter">
-        <span>Show</span>
-        <select id="news-filter" data-news-filter>
-          <option value="all">All types</option>
-          
-            <option value="zoom">Zoom</option>
-          
-            <option value="workshop">Workshop</option>
-          
-        </select>
-      </label>
+      <div class="filter-stack">
+        <label class="filter-control" for="news-filter">
+          <span>Show</span>
+          <select id="news-filter" data-news-filter aria-describedby="news-filter-status">
+            <option value="all">All types</option>
+            
+              <option value="zoom">Zoom</option>
+            
+              <option value="workshop">Workshop</option>
+            
+          </select>
+        </label>
+        <p class="filter-status" id="news-filter-status" data-news-filter-status aria-live="polite">Showing all 2 current notices.</p>
+      </div>
     </div>
 
     <div class="news-list">
@@ -173,6 +179,6 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="assets/js/main.js?v=2026-05-12-admin-password"></script>
+  <script src="assets/js/main.js?v=2026-05-13-accessibility"></script>
 </body>
 </html>
