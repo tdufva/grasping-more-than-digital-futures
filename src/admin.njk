@@ -4,7 +4,7 @@ pageTitle: Admin Editor
 current: admin
 rootPath: ../
 adminPage: true
-description: Browser-based JSON editor for updating members, news, and events on the Grasping More-than-Digital Futures site.
+description: Browser-based content editor for the Grasping More-than-Digital Futures site.
 permalink: admin/index.html
 ---
 <main id="main" class="page-shell admin-shell" data-admin-editor>
@@ -15,8 +15,8 @@ permalink: admin/index.html
       <span class="window-lines" aria-hidden="true"></span>
     </div>
     <div class="window-body">
-      <p class="lead">A small browser editor for normal content updates. Edit the forms, preview the cards, validate required fields, then copy or download the JSON and commit it through GitHub.</p>
-      <p class="system-note">Static-site rule: this page cannot save by itself. It prepares the file that GitHub Actions will publish after you commit it.</p>
+      <p class="lead">Edit the site through ordinary form fields. Changes are kept as a private draft in this browser while you work.</p>
+      <p class="system-note">To publish, the editor copies one prepared file into GitHub. GitHub Actions then updates the public site.</p>
     </div>
   </section>
 
@@ -46,19 +46,33 @@ permalink: admin/index.html
         <h2 id="admin-command-title" class="title-text">Choose File</h2>
         <span class="window-lines" aria-hidden="true"></span>
       </div>
-      <div class="window-body">
+      <div class="window-body admin-command-body">
+        <ol class="admin-workflow" aria-label="Publishing steps">
+          <li data-admin-step="edit" aria-current="step"><span>1</span>Edit</li>
+          <li data-admin-step="check"><span>2</span>Check</li>
+          <li data-admin-step="github"><span>3</span>Open GitHub</li>
+          <li data-admin-step="commit"><span>4</span>Commit</li>
+        </ol>
         <div class="admin-tabs" role="tablist" aria-label="Editable content files">
-          <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="true">Members</button>
-          <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false">News &amp; Events</button>
+          <button class="classic-button" type="button" data-admin-tab="site" role="tab" aria-selected="true"><span>Home</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="false"><span>Members</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false"><span>News &amp; Events</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="research" role="tab" aria-selected="false"><span>Research</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="contact" role="tab" aria-selected="false"><span>Contact</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="companion" role="tab" aria-selected="false"><span>Pixel</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
         </div>
         <div class="admin-action-row" aria-label="File actions">
           <button class="classic-button" type="button" data-admin-action="validate">Validate</button>
-          <button class="classic-button" type="button" data-admin-action="copy">Copy JSON</button>
-          <button class="classic-button" type="button" data-admin-action="download">Download JSON</button>
-          <button class="classic-button" type="button" data-admin-action="github">Copy JSON + Open GitHub Editor</button>
+          <button class="classic-button admin-primary-action" type="button" data-admin-action="github">Copy &amp; Open GitHub</button>
+          <button class="classic-button" type="button" data-admin-action="copy">Copy File</button>
+          <button class="classic-button" type="button" data-admin-action="download">Download Backup</button>
+          <button class="classic-button" type="button" data-admin-action="restore">Restore Published</button>
           <button class="classic-button" type="button" data-admin-action="lock">Lock Admin</button>
         </div>
-        <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/members.json</code>.</p>
+        <div class="admin-file-state">
+          <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/site.json</code>.</p>
+          <p class="admin-draft-status" data-admin-draft-status aria-live="polite">No browser draft for this file.</p>
+        </div>
       </div>
     </section>
 
@@ -77,7 +91,7 @@ permalink: admin/index.html
       <aside class="window admin-preview-window" aria-labelledby="admin-preview-title">
         <div class="title-bar">
           <span class="window-box" aria-hidden="true"></span>
-          <h2 id="admin-preview-title" class="title-text">Preview + Export</h2>
+          <h2 id="admin-preview-title" class="title-text">Preview + Prepared File</h2>
           <span class="window-lines" aria-hidden="true"></span>
         </div>
         <div class="window-body">
@@ -87,12 +101,12 @@ permalink: admin/index.html
           </section>
 
           <section class="admin-preview-panel" aria-labelledby="admin-live-preview-title">
-            <h3 id="admin-live-preview-title">Card Preview</h3>
+            <h3 id="admin-live-preview-title">Page Preview</h3>
             <div data-admin-preview></div>
           </section>
 
           <label class="admin-field admin-output-field">
-            <span>Generated JSON</span>
+            <span>Prepared file</span>
             <textarea data-admin-output rows="16" readonly spellcheck="false"></textarea>
           </label>
         </div>
@@ -100,9 +114,19 @@ permalink: admin/index.html
     </div>
   </div>
 
+  <script type="application/json" id="admin-site-data">{{ site | json | safe }}</script>
   <script type="application/json" id="admin-members-data">{{ members | json | safe }}</script>
   <script type="application/json" id="admin-news-data">{{ news | json | safe }}</script>
+  <script type="application/json" id="admin-research-data">{{ researchThemes | json | safe }}</script>
+  <script type="application/json" id="admin-contact-data">{{ contact | json | safe }}</script>
+  <script type="application/json" id="admin-companion-data">{{ companion | json | safe }}</script>
   <script type="application/json" id="admin-file-config">{
+    "site": {
+      "label": "Home",
+      "filePath": "src/_data/site.json",
+      "downloadName": "site.json",
+      "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/site.json"
+    },
     "members": {
       "label": "Members",
       "filePath": "src/_data/members.json",
@@ -114,6 +138,24 @@ permalink: admin/index.html
       "filePath": "src/_data/news.json",
       "downloadName": "news.json",
       "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/news.json"
+    },
+    "research": {
+      "label": "Research",
+      "filePath": "src/_data/researchThemes.json",
+      "downloadName": "researchThemes.json",
+      "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/researchThemes.json"
+    },
+    "contact": {
+      "label": "Contact",
+      "filePath": "src/_data/contact.json",
+      "downloadName": "contact.json",
+      "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/contact.json"
+    },
+    "companion": {
+      "label": "Pixel",
+      "filePath": "src/_data/companion.json",
+      "downloadName": "companion.json",
+      "editUrl": "{{ site.repository.url }}/edit/{{ site.repository.branch }}/src/_data/companion.json"
     }
   }</script>
 </main>

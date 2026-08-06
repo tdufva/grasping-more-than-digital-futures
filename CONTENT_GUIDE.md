@@ -45,13 +45,15 @@ Templates live in `src/*.njk` and `src/_includes/`. Edit those only when changin
 
 ## Edit in the Browser
 
-For regular member and news/event edits, open the static admin editor:
+For regular content edits, open the static admin editor:
 
 ```text
 https://tdufva.github.io/grasping-more-than-digital-futures/admin/
 ```
 
-The editor lets you use form fields, preview cards, validate required fields, copy JSON, download JSON, and open the matching file in GitHub's web editor. After committing the JSON change in GitHub, GitHub Actions rebuilds and publishes the site automatically.
+The editor provides form-based tabs for the homepage, members, news/events, research themes, contact wording, and Pixel's messages. It previews changes, validates required fields, keeps recoverable drafts in your browser, prepares the correct JSON file, and opens that file in GitHub's web editor. After you paste and commit the change in GitHub, GitHub Actions rebuilds and publishes the site automatically.
+
+Browser drafts are stored only in that browser and are not public. After a committed update has been deployed, reloading the admin page recognizes the published data and clears the matching draft automatically. "Restore Published" discards the current draft and returns to the version loaded from the public site.
 
 Because GitHub Pages is static, the editor cannot save directly to the repository. It prepares the JSON file for GitHub.
 

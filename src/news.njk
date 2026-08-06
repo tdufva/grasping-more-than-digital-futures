@@ -28,9 +28,9 @@ permalink: news.html
           <span>Show</span>
           <select id="news-filter" data-news-filter aria-describedby="news-filter-status">
             <option value="all">All types</option>
-            {% for option in news.current | newsTypeOptions %}
+            {%- for option in news.current | newsTypeOptions %}
               <option value="{{ option.slug }}">{{ option.label }}</option>
-            {% endfor %}
+            {%- endfor %}
           </select>
         </label>
         <p class="filter-status" id="news-filter-status" data-news-filter-status aria-live="polite">Showing all {{ news.current.length }} current notices.</p>

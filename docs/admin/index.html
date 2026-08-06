@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browser-based JSON editor for updating members, news, and events on the Grasping More-than-Digital Futures site.">
+  <meta name="description" content="Browser-based content editor for the Grasping More-than-Digital Futures site.">
   <title>Admin Editor | Grasping More-than-Digital Futures</title>
   <script>
     (function () {
@@ -20,7 +20,7 @@
       document.documentElement.dataset.background = choices.indexOf(saved) >= 0 ? saved : fallback;
     })();
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css?v=2026-05-13-accessibility">
+  <link rel="stylesheet" href="../assets/css/style.css?v=2026-08-06-admin-editor">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,7 +37,7 @@
       <ul class="menu-list" id="site-menu">
           <li><a href="../index.html">Home</a></li>
           <li><a href="../members.html">Members</a></li>
-          <li><a href="../news.html">News & Events</a></li>
+          <li><a href="../news.html">News &amp; Events</a></li>
           <li><a href="../research.html">Research</a></li>
           <li><a href="../contact.html">Contact</a></li>
           <li><a href="../admin/" aria-current="page">Admin</a></li>
@@ -74,8 +74,8 @@
       <span class="window-lines" aria-hidden="true"></span>
     </div>
     <div class="window-body">
-      <p class="lead">A small browser editor for normal content updates. Edit the forms, preview the cards, validate required fields, then copy or download the JSON and commit it through GitHub.</p>
-      <p class="system-note">Static-site rule: this page cannot save by itself. It prepares the file that GitHub Actions will publish after you commit it.</p>
+      <p class="lead">Edit the site through ordinary form fields. Changes are kept as a private draft in this browser while you work.</p>
+      <p class="system-note">To publish, the editor copies one prepared file into GitHub. GitHub Actions then updates the public site.</p>
     </div>
   </section>
 
@@ -105,19 +105,33 @@
         <h2 id="admin-command-title" class="title-text">Choose File</h2>
         <span class="window-lines" aria-hidden="true"></span>
       </div>
-      <div class="window-body">
+      <div class="window-body admin-command-body">
+        <ol class="admin-workflow" aria-label="Publishing steps">
+          <li data-admin-step="edit" aria-current="step"><span>1</span>Edit</li>
+          <li data-admin-step="check"><span>2</span>Check</li>
+          <li data-admin-step="github"><span>3</span>Open GitHub</li>
+          <li data-admin-step="commit"><span>4</span>Commit</li>
+        </ol>
         <div class="admin-tabs" role="tablist" aria-label="Editable content files">
-          <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="true">Members</button>
-          <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false">News &amp; Events</button>
+          <button class="classic-button" type="button" data-admin-tab="site" role="tab" aria-selected="true"><span>Home</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="members" role="tab" aria-selected="false"><span>Members</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="news" role="tab" aria-selected="false"><span>News &amp; Events</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="research" role="tab" aria-selected="false"><span>Research</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="contact" role="tab" aria-selected="false"><span>Contact</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
+          <button class="classic-button" type="button" data-admin-tab="companion" role="tab" aria-selected="false"><span>Pixel</span><span class="admin-draft-mark" aria-hidden="true">*</span></button>
         </div>
         <div class="admin-action-row" aria-label="File actions">
           <button class="classic-button" type="button" data-admin-action="validate">Validate</button>
-          <button class="classic-button" type="button" data-admin-action="copy">Copy JSON</button>
-          <button class="classic-button" type="button" data-admin-action="download">Download JSON</button>
-          <button class="classic-button" type="button" data-admin-action="github">Copy JSON + Open GitHub Editor</button>
+          <button class="classic-button admin-primary-action" type="button" data-admin-action="github">Copy &amp; Open GitHub</button>
+          <button class="classic-button" type="button" data-admin-action="copy">Copy File</button>
+          <button class="classic-button" type="button" data-admin-action="download">Download Backup</button>
+          <button class="classic-button" type="button" data-admin-action="restore">Restore Published</button>
           <button class="classic-button" type="button" data-admin-action="lock">Lock Admin</button>
         </div>
-        <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/members.json</code>.</p>
+        <div class="admin-file-state">
+          <p class="admin-status" data-admin-status aria-live="polite">Ready to edit <code>src/_data/site.json</code>.</p>
+          <p class="admin-draft-status" data-admin-draft-status aria-live="polite">No browser draft for this file.</p>
+        </div>
       </div>
     </section>
 
@@ -136,7 +150,7 @@
       <aside class="window admin-preview-window" aria-labelledby="admin-preview-title">
         <div class="title-bar">
           <span class="window-box" aria-hidden="true"></span>
-          <h2 id="admin-preview-title" class="title-text">Preview + Export</h2>
+          <h2 id="admin-preview-title" class="title-text">Preview + Prepared File</h2>
           <span class="window-lines" aria-hidden="true"></span>
         </div>
         <div class="window-body">
@@ -146,12 +160,12 @@
           </section>
 
           <section class="admin-preview-panel" aria-labelledby="admin-live-preview-title">
-            <h3 id="admin-live-preview-title">Card Preview</h3>
+            <h3 id="admin-live-preview-title">Page Preview</h3>
             <div data-admin-preview></div>
           </section>
 
           <label class="admin-field admin-output-field">
-            <span>Generated JSON</span>
+            <span>Prepared file</span>
             <textarea data-admin-output rows="16" readonly spellcheck="false"></textarea>
           </label>
         </div>
@@ -159,9 +173,19 @@
     </div>
   </div>
 
+  <script type="application/json" id="admin-site-data">{"title":"Grasping More-than-Digital Futures","assetVersion":"2026-08-06-admin-editor","subtitle":"A research collective for art, craft, education, culture and technology after digital and AI promises","description":"Grasping More-than-Digital Futures is an informal interdisciplinary research collective for art, craft, education, culture and technology after digital and AI promises.","footerTagline":"An open, informal, interdisciplinary research collective.","nav":[{"key":"home","label":"Home","url":"index.html"},{"key":"members","label":"Members","url":"members.html"},{"key":"news","label":"News & Events","url":"news.html"},{"key":"research","label":"Research","url":"research.html"},{"key":"contact","label":"Contact","url":"contact.html"},{"key":"admin","label":"Admin","url":"admin/"}],"repository":{"owner":"tdufva","name":"grasping-more-than-digital-futures","branch":"main","url":"https://github.com/tdufva/grasping-more-than-digital-futures"},"home":{"systemNote":"Informal research collective","lead":"We explore how humans make, teach, learn, sense, and imagine with technologies after the promises of seamless digital progress and artificial intelligence. Our research turns toward the cracks and frictions of the digital, asking where digital technologies become tangible, situated, and open to touch, interpretation, and transformation. As a loose research collective, we work across the intersections of technology, craft, art, and education.","descriptionParagraphs":["Grasping More-than-Digital Futures is an informal interdisciplinary research collective for scholars exploring the intersections of art, craft, sloyd, education, technology, culture, and digital transformation.","Our work engages with post-digital education, post-AI pedagogies, sustainable computing, digital craft, embodiment, feminist data sciences, critical artistic research, and more-than-digital ways of knowing and making."],"coreInterests":["Post-digital education and art education","Post-AI pedagogies and critical AI studies","Craft, sloyd, digital materiality, and making","Sustainable computing and ecological technologies","Embodiment, feminist data sciences, and experimental practice"],"ctas":[{"label":"Explore our research","url":"research.html"},{"label":"Meet the members","url":"members.html"},{"label":"Follow our events","url":"news.html"}],"interestCards":[{"icon":"folder","iconLabel":"Folder icon","title":"After Digital Promises","text":"We ask what education, art, and culture become when digital tools are ordinary, uneven, material, and politically charged."},{"icon":"hand","iconLabel":"Handmade mark icon","title":"Crafted Knowledge","text":"We treat craft, sloyd, making, touch, repair, and situated practice as serious ways of thinking with technology."},{"icon":"circuit","iconLabel":"Circuit icon","title":"Critical Technologies","text":"We study AI, data, platforms, infrastructures, and sustainable computing through feminist, ecological, and cultural lenses."}]}}</script>
   <script type="application/json" id="admin-members-data">{"intro":"The collective is an international network of researchers working in the fields of education, art, craft, culture & technology","heading":"Members","items":[{"name":"Tomi Slotte Dufva","role":"Assistant Professor in Arts Education; group coordinator","institution":"Aalto University, the School of Arts, Design and Architecture, Department of Art and Design","image":{"src":"assets/images/members/tomi-slotte-dufva.jpg","alt":"Portrait of Tomi Slotte Dufva wearing translucent glasses","width":900,"height":1200},"researchInterests":"Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education","bio":"Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.","links":[{"label":"Website","url":"https://www.thispagehassomeissues.com"},{"label":"Aalto Research","url":"https://research.aalto.fi/en/persons/tomi-slotte-dufva/"},{"label":"Google Scholar","url":"https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi"},{"label":"LinkedIn","url":"https://www.linkedin.com/in/tomidufva?originalSubdomain=fi"},{"label":"Mastodon","url":"https://mastodon.nu/@tsdufva"}]},{"name":"Member Placeholder 02","role":"Postdoctoral Researcher","institution":"Research institute placeholder","researchInterests":"Post-AI education, critical data studies, feminist data sciences","bio":"Studies how AI systems shape knowledge practices, pedagogical agency, and the everyday politics of data in educational settings.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 03","role":"University Lecturer","institution":"Faculty placeholder","researchInterests":"Sloyd, teacher education, more-than-digital pedagogies","bio":"Works with teacher education, craft traditions, and experimental pedagogies that connect material making with cultural analysis.","links":[{"label":"member03@example.org","url":"mailto:member03@example.org"}]},{"name":"Member Placeholder 04","role":"Professor","institution":"School of arts / education placeholder","researchInterests":"Critical technology studies, culture, art, ecological thinking","bio":"Develops interdisciplinary research environments around artistic inquiry, cultural critique, and technological imaginaries.","links":[{"label":"Website placeholder","url":"https://example.org"}]},{"name":"Member Placeholder 05","role":"Independent Researcher","institution":"Independent / artist-researcher placeholder","researchInterests":"Embodiment, repair cultures, artistic research methods","bio":"Combines experimental practice, writing, and public pedagogy to examine bodies, tools, infrastructures, and care.","links":[{"label":"member05@example.org","url":"mailto:member05@example.org"}]},{"name":"Member Placeholder 06","role":"Artist-Educator","institution":"Collective / studio placeholder","researchInterests":"Digital craft, workshops, participatory methods, media archaeology","bio":"Facilitates collaborative workshops that use old and new technologies to ask how futures are made, maintained, and refused.","links":[{"label":"Website placeholder","url":"https://example.org"}]}]}</script>
   <script type="application/json" id="admin-news-data">{"intro":"A place for seminars, workshops, reading groups, conference sessions, calls for papers, publications, and small announcements from the collective.","current":[{"date":"TBA","title":"Founding meeting for the group","type":"Zoom","typeSlug":"zoom","description":"Online meeting on establishing the group","url":"","linkLabel":"Link placeholder"},{"date":"TBA","title":"Workshops, seminars, calls for papers etc. Are awaiting in the future!","type":"Workshop","typeSlug":"workshop","description":"A hands-on placeholder workshop for exploring tool traces, sensors, repair, textiles, code, and more-than-digital studio practices.","url":"","linkLabel":"Link placeholder"}],"archive":[{"date":"2025-11-20","description":"Placeholder conference session on craft, platforms, and public pedagogy."},{"date":"2025-09-12","description":"Placeholder reading note on feminist data science and embodied methods."}]}</script>
+  <script type="application/json" id="admin-research-data">[{"title":"Post-digital education","description":"We examine education after the digital has become ordinary infrastructure, asking how learning is shaped by platforms, media saturation, maintenance, inequality, and everyday technological habits."},{"title":"Post-digital art education","description":"We explore art education in contexts where analog and digital practices are intertwined, attending to studio cultures, image-making, critique, experimentation, and material traces."},{"title":"Post-AI education","description":"We study pedagogical life after AI promises by focusing on agency, labor, authorship, assessment, uncertainty, automation, and the cultural imaginaries that surround machine intelligence."},{"title":"Craft, sloyd, and digital materiality","description":"We treat craft and sloyd as critical practices for understanding tools, bodies, materials, histories, code, sensors, repair, and the tactile dimensions of digital culture."},{"title":"Sustainable computing and ecological technologies","description":"We ask how computing can be studied and practiced through ecological limits, energy use, repair, reuse, slowness, sufficiency, and more careful technological futures."},{"title":"Embodiment and material practices","description":"We foreground bodies, senses, gestures, tools, atmospheres, and sites as active participants in research, teaching, learning, and artistic inquiry."},{"title":"Feminist data sciences","description":"We engage with feminist approaches to data, classification, visualization, accountability, refusal, situated knowledge, and the power relations embedded in computational systems."},{"title":"Culture, art, and critical technology studies","description":"We connect cultural analysis, artistic research, and critical technology studies to understand how technological futures are narrated, contested, designed, and lived."},{"title":"More-than-digital pedagogies","description":"We develop pedagogies that move beyond tool-centered thinking toward relational, embodied, ecological, affective, and experimental ways of knowing and making."}]</script>
+  <script type="application/json" id="admin-contact-data">{"intro":"Researchers interested in more-than-digital questions are warmly invited to get in touch. The group is informal, collaborative, and open to interdisciplinary exchange.","emailActionLabel":"Contact Tomi by email","emailOpenLabel":"Open email app","emailCopyLabel":"Copy email address","emailFallback":"tomi dot slottedufva [at] aalto dot fi","emailHelp":"To reduce automated harvesting, the address is assembled only after you press the button.","emailReadyMessage":"The protected contact options are ready.","invitationParagraphs":["We welcome doctoral & postdoctoral researchers, university lecturers, professors, and other researchers working across art, craft, sloyd, education, technology, culture, and related fields.","You might contact us about reading groups, seminars, co-writing, visiting talks, workshops, conferences, shared syllabi, collaborative projects, or simply to say that these questions resonate with your work."],"note":"This collective is imagined as open rather than membership-heavy. Participation can be occasional, project-based, local, online, experimental, slow, or still forming.","suggestions":["Share a short research interest or bio.","Suggest a text, workshop, seminar, or collaboration.","Tell us what more-than-digital futures mean in your context."]}</script>
+  <script type="application/json" id="admin-companion-data">{"systemNote":"Tiny fieldwork game","initialMessage":"Pet Pixel, or ask for a bark.","initialNote":"The companion is trained in slow scholarship, snack ethics, and suspiciously good seminar timing.","petMessages":["Pixel approves this methodology, conditionally.","Good pet. A careful thought has been peer-reviewed.","Tail wagging in slow scholarship mode.","Pixel has detected a hidden connection between craft and infrastructure.","Tiny companion status: deeply interdisciplinary."],"fetchedThoughts":["Prompt: What does AI fail to notice about hands, tools, and waiting?","Prompt: Treat the cloud as a material place with wires, weather, bills, and repair.","Prompt: Pair sloyd with server maintenance. See what refuses to become seamless.","Prompt: Ask what a classroom remembers after the device is switched off.","Prompt: Follow the smallest tool mark. It may know the future better than the dashboard."],"petPrompt":"Pet five times to earn Pixel's tiny archival trust.","trustedNote":"Pixel now trusts this collective with a shared Zotero folder.","fetchNote":"Pixel drops the prompt at your feet, then pretends it was rigorous all along."}</script>
   <script type="application/json" id="admin-file-config">{
+    "site": {
+      "label": "Home",
+      "filePath": "src/_data/site.json",
+      "downloadName": "site.json",
+      "editUrl": "https://github.com/tdufva/grasping-more-than-digital-futures/edit/main/src/_data/site.json"
+    },
     "members": {
       "label": "Members",
       "filePath": "src/_data/members.json",
@@ -173,6 +197,24 @@
       "filePath": "src/_data/news.json",
       "downloadName": "news.json",
       "editUrl": "https://github.com/tdufva/grasping-more-than-digital-futures/edit/main/src/_data/news.json"
+    },
+    "research": {
+      "label": "Research",
+      "filePath": "src/_data/researchThemes.json",
+      "downloadName": "researchThemes.json",
+      "editUrl": "https://github.com/tdufva/grasping-more-than-digital-futures/edit/main/src/_data/researchThemes.json"
+    },
+    "contact": {
+      "label": "Contact",
+      "filePath": "src/_data/contact.json",
+      "downloadName": "contact.json",
+      "editUrl": "https://github.com/tdufva/grasping-more-than-digital-futures/edit/main/src/_data/contact.json"
+    },
+    "companion": {
+      "label": "Pixel",
+      "filePath": "src/_data/companion.json",
+      "downloadName": "companion.json",
+      "editUrl": "https://github.com/tdufva/grasping-more-than-digital-futures/edit/main/src/_data/companion.json"
     }
   }</script>
 </main>
@@ -186,7 +228,7 @@
     <p class="footer-meta">Last interface refresh: <span data-current-year>2026</span></p>
   </footer>
 
-  <script src="../assets/js/main.js?v=2026-05-13-accessibility"></script>
-    <script src="../assets/js/admin.js?v=2026-05-13-accessibility"></script>
+  <script src="../assets/js/main.js?v=2026-08-06-admin-editor"></script>
+    <script src="../assets/js/admin.js?v=2026-08-06-admin-editor"></script>
 </body>
 </html>

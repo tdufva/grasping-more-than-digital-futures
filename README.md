@@ -96,7 +96,7 @@ The site includes a lightweight static editor at:
 https://tdufva.github.io/grasping-more-than-digital-futures/admin/
 ```
 
-Use it to edit member profiles and news/events in form fields, preview the cards, validate required fields, then copy or download the updated JSON. The "Copy JSON + Open GitHub Editor" button copies the generated JSON and opens the correct file in GitHub's web editor. Replace the file contents, commit the change, and GitHub Actions will rebuild and publish the site.
+Use it to edit the homepage, member profiles, news/events, research themes, contact wording, and Pixel's messages in ordinary form fields. The editor previews changes, checks required fields, and automatically keeps private drafts in the current browser. The "Copy & Open GitHub" button copies the prepared file and opens the correct GitHub editor. Replace the file contents, commit the change, and GitHub Actions will rebuild and publish the site.
 
 The editor is intentionally static. It does not store passwords, use a database, or save content by itself.
 
@@ -107,8 +107,8 @@ GitHub Pages is deployed by GitHub Actions. Whenever `main` changes, `.github/wo
 For normal content edits in GitHub, you do not need to run a terminal command:
 
 1. Open `/admin/`.
-2. Edit members or news/events.
-3. Copy the generated JSON and open the matching GitHub editor.
+2. Choose a content tab and edit the form.
+3. Validate it, then use "Copy & Open GitHub".
 4. Paste over the old JSON file.
 5. Commit the change on `main`.
 
