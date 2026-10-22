@@ -45,8 +45,8 @@
       "image": {
         "src": "assets/images/members/roberto.jpg",
         "alt": "Portrait of Roberto standing beside a textured wall",
-        "width": 900,
-        "height": 675
+        "width": 1200,
+        "height": 1600
       },
       "researchInterests": "Sensors, data and simulation; feedback systems; sonification; experimental electronics; programming and design",
       "bio": "Roberto is a Helsinki-based media artist working with sensors, data, and simulation to explore the Baltic Sea and other environmental systems. His practice treats technology as an instrument that can shape experience, while remaining attentive to the social and ethical conditions surrounding technological work."
@@ -59,8 +59,8 @@
       "image": {
         "src": "assets/images/members/ingrid-forsler.jpg",
         "alt": "Portrait of Ingrid Forsler standing outdoors",
-        "width": 900,
-        "height": 675
+        "width": 1600,
+        "height": 1597
       },
       "researchInterests": "Postdigital media; digital sociability in education; visual arts teacher education; interactive research methodologies",
       "bio": "Ingrid is a media and communication researcher with a background in visual arts education. Her work examines current digital sociability in education, teacher education reform, and the histories and futures of interactive research methodologies."
@@ -73,8 +73,8 @@
       "image": {
         "src": "assets/images/members/tiago-martins-pinto.jpg",
         "alt": "Black-and-white portrait of Tiago Martins Pinto",
-        "width": 900,
-        "height": 675
+        "width": 1024,
+        "height": 1024
       },
       "researchInterests": "Digital technology in art and education; informal media-based learning; participation; facilitation; creative practice with young people",
       "bio": "Tiago works across digital technology, educational practice, and creative coding. His doctoral research focuses on informal artistic and media-based learning with immigrant-background young people in Eastern Helsinki, particularly questions of participation, facilitation, and creative practice.",
@@ -90,8 +90,8 @@
       "image": {
         "src": "assets/images/members/ingri-strand.jpg",
         "alt": "Portrait of Ingri Strand",
-        "width": 900,
-        "height": 675
+        "width": 1066,
+        "height": 1600
       },
       "researchInterests": "Virtual reality and AI in art and crafts education; architectural tasks; screen-based media; interdisciplinary pedagogy",
       "bio": "Ingri develops pedagogy in design, art, and crafts education in relation to new technologies. Her research includes virtual reality in lower-secondary architectural tasks and the introduction of technologies such as VR and AI into art and crafts education."
@@ -104,8 +104,8 @@
       "image": {
         "src": "assets/images/members/dantommi.jpg",
         "alt": "Digitally fragmented portrait of DanTommi",
-        "width": 900,
-        "height": 675
+        "width": 1254,
+        "height": 1254
       },
       "researchInterests": "Physical, digital and virtual spaces; sculpture; photography; photogrammetry; 3D scanning; public clouds; visual environments",
       "bio": "DanTommi's practice moves between physical, digital, and virtual spaces. Working with sculpture, photography, photogrammetry, 3D scanning, public clouds, and virtual environments, DanTommi explores how spaces become digital and how digital forms return to physical space."
@@ -118,8 +118,8 @@
       "image": {
         "src": "assets/images/members/hanna.jpg",
         "alt": "Portrait of Hanna making a hand gesture",
-        "width": 900,
-        "height": 675
+        "width": 642,
+        "height": 476
       },
       "researchInterests": "Creative coding; art and media education; web cultures; software studies; computer aesthetics; postdigital subjectivation",
       "bio": "Hanna teaches across hybrid bachelor modules in design, film, and art. Her doctoral work reconstructs creative coding from an art and media education perspective, asking how practitioners navigate its heterogeneous positions, assumptions, and unresolved questions."
@@ -132,8 +132,8 @@
       "image": {
         "src": "assets/images/members/kasperi-maki-reinikka.jpg",
         "alt": "Portrait of Kasperi Mäki-Reinikka in front of a projected image",
-        "width": 900,
-        "height": 675
+        "width": 640,
+        "height": 480
       },
       "researchInterests": "Art, science, and technology; interdisciplinary dialogue; collaboration; media art; art education",
       "bio": "Kasperi is a university teacher in art education and a doctoral researcher at Aalto University. With a background in school art teaching, media art, and arts organizations, he studies how dialogue and collaboration across art and science can have a systemic impact on postdigital society.",
@@ -149,8 +149,8 @@
       "image": {
         "src": "assets/images/members/pekka-mertala.jpg",
         "alt": "Portrait of Pekka Mertala wearing glasses",
-        "width": 900,
-        "height": 675
+        "width": 1266,
+        "height": 1361
       },
       "researchInterests": "Postdigital childhood; education, texts, and technologies; new literacies; human-computer interaction; relational philosophy",
       "bio": "Pekka studies what it means to be a child in a postdigital world. He leads the interdisciplinary Education, Texts, and Technologies research group and currently explores how different forms of talent are defined, recognized, and performed in postdigital conditions."
@@ -163,8 +163,8 @@
       "image": {
         "src": "assets/images/members/lauri-palsa.jpg",
         "alt": "Lauri Palsa photographed outdoors in an orchard",
-        "width": 900,
-        "height": 675
+        "width": 1200,
+        "height": 1600
       },
       "researchInterests": "Literacies; media and data literacy; education policy; digital technologies in learning; ecological and social dimensions of educational technology",
       "bio": "Lauri works with media literacy, data literacy, and education research across national and European contexts. His postdoctoral work considers how literacy concepts are reshaped in the postdigital age, with particular attention to the ecological and social dimensions of educational technology."
