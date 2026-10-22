@@ -224,6 +224,7 @@
 
     const outputMember = {
       name: String(member.name || "").trim(),
+      country: String(member.country || "").trim(),
       role: String(member.role || "").trim(),
       institution: String(member.institution || "").trim()
     };
@@ -399,7 +400,7 @@
 
     memberItems().forEach((member, index) => {
       const label = member.name || `Member ${index + 1}`;
-      ["name", "role", "institution", "researchInterests", "bio"].forEach((key) => required(messages, member[key], `${label}: ${key}`));
+      ["name", "country", "role", "institution", "researchInterests", "bio"].forEach((key) => required(messages, member[key], `${label}: ${key}`));
       if (member.image?.src && !member.image?.alt) messages.push(`${label}: image alt text is required when an image source is set.`);
       (member.links || []).forEach((link, linkIndex) => {
         if ((link.label || link.url) && (!link.label || !link.url)) messages.push(`${label}: link ${linkIndex + 1} needs both label and URL.`);
@@ -563,6 +564,7 @@
             ${itemActions("member", index, items.length, member.name || `member ${index + 1}`)}
             <div class="admin-field-grid">
               ${field({ label: "Name", value: member.name, scope: "member", name: "name", index })}
+              ${field({ label: "Country", value: member.country, scope: "member", name: "country", index })}
               ${field({ label: "Role", value: member.role, scope: "member", name: "role", index })}
               ${field({ label: "Institution", value: member.institution, scope: "member", name: "institution", index, wide: true })}
               ${field({ label: "Research interests", value: member.researchInterests, scope: "member", name: "researchInterests", index, textarea: true, wide: true })}
@@ -723,7 +725,7 @@
         .join('<span aria-hidden="true">|</span>');
       return `<article class="admin-preview-card">
         <h4>${escapeHtml(member.name || "Unnamed member")}</h4>${image}
-        <dl class="profile-list"><dt>Role</dt><dd>${escapeHtml(member.role || "")}</dd><dt>Institution</dt><dd>${escapeHtml(member.institution || "")}</dd><dt>Research interests</dt><dd>${escapeHtml(member.researchInterests || "")}</dd></dl>
+        <dl class="profile-list"><dt>Country</dt><dd>${escapeHtml(member.country || "")}</dd><dt>Role</dt><dd>${escapeHtml(member.role || "")}</dd><dt>Institution</dt><dd>${escapeHtml(member.institution || "")}</dd><dt>Research interests</dt><dd>${escapeHtml(member.researchInterests || "")}</dd></dl>
         <p>${escapeHtml(member.bio || "")}</p>${links ? `<p class="profile-links">${links}</p>` : ""}
       </article>`;
     }).join("");
@@ -901,7 +903,7 @@
     interest: () => "",
     cta: () => ({ label: "", url: "" }),
     "interest-card": () => ({ icon: "folder", iconLabel: "Folder icon", title: "", text: "" }),
-    member: () => ({ name: "", role: "", institution: "", researchInterests: "", bio: "", links: [] }),
+    member: () => ({ name: "", country: "", role: "", institution: "", researchInterests: "", bio: "", links: [] }),
     current: () => ({ date: "", title: "", type: "", typeSlug: "", description: "", url: "", linkLabel: "" }),
     archive: () => ({ date: "", description: "" }),
     research: () => ({ title: "", description: "" }),

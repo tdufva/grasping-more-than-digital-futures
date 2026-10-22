@@ -4,6 +4,7 @@
   "items": [
     {
       "name": "Tomi Slotte Dufva",
+      "country": "Finland",
       "role": "Assistant Professor in Arts Education; group coordinator",
       "institution": "Aalto University, the School of Arts, Design and Architecture, Department of Art and Design",
       "image": {
@@ -15,92 +16,158 @@
       "researchInterests": "Post-digital, post-AI art, education and culture; embodied and experiential learning; critical digital literacy; visual culture; philosophies of art, craft, and education",
       "bio": "Tomi Slotte Dufva coordinates the group and researches art, education, culture, and technology through post-digital and post-AI perspectives, with attention to embodiment, experience, critical literacy, visual culture, and philosophies of art, craft, and education.",
       "links": [
-        {
-          "label": "Website",
-          "url": "https://www.thispagehassomeissues.com"
-        },
-        {
-          "label": "Aalto Research",
-          "url": "https://research.aalto.fi/en/persons/tomi-slotte-dufva/"
-        },
-        {
-          "label": "Google Scholar",
-          "url": "https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi"
-        },
-        {
-          "label": "LinkedIn",
-          "url": "https://www.linkedin.com/in/tomidufva?originalSubdomain=fi"
-        },
-        {
-          "label": "Mastodon",
-          "url": "https://mastodon.nu/@tsdufva"
-        }
+        { "label": "Website", "url": "https://www.thispagehassomeissues.com" },
+        { "label": "Aalto Research", "url": "https://research.aalto.fi/en/persons/tomi-slotte-dufva/" },
+        { "label": "Google Scholar", "url": "https://scholar.google.com/citations?user=qRegqU0AAAAJ&hl=fi" },
+        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/tomidufva?originalSubdomain=fi" },
+        { "label": "Mastodon", "url": "https://mastodon.nu/@tsdufva" }
       ]
     },
     {
-      "name": "Member Placeholder 02",
+      "name": "Iiro Tujula",
+      "country": "Finland",
+      "role": "Multidisciplinary artist, designer and educator; doctoral researcher",
+      "institution": "Aalto University and Velkua Comprehensive School",
+      "image": {
+        "src": "assets/images/members/iiro.jpg",
+        "alt": "Illustrated avatar of Iiro Tujula holding colorful art and technology objects",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Art and technology; creative learning; visual technologies; digital making; multidisciplinary art and education",
+      "bio": "Iiro works across artistic practice, design, and education. Alongside doctoral research at Aalto University, he teaches visual arts and craft at Velkua Comprehensive School and explores how technologies participate in creative learning."
+    },
+    {
+      "name": "Roberto",
+      "country": "Italy / Finland",
+      "role": "Media artist and technician",
+      "institution": "Academy of Fine Arts, University of the Arts Helsinki",
+      "image": {
+        "src": "assets/images/members/roberto.jpg",
+        "alt": "Portrait of Roberto standing beside a textured wall",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Sensors, data and simulation; feedback systems; sonification; experimental electronics; programming and design",
+      "bio": "Roberto is a Helsinki-based media artist working with sensors, data, and simulation to explore the Baltic Sea and other environmental systems. His practice treats technology as an instrument that can shape experience, while remaining attentive to the social and ethical conditions surrounding technological work."
+    },
+    {
+      "name": "Ingrid Forsler",
+      "country": "Sweden",
+      "role": "Associate Professor in Media and Communication Studies",
+      "institution": "Södertörn University, Sweden",
+      "image": {
+        "src": "assets/images/members/ingrid-forsler.jpg",
+        "alt": "Portrait of Ingrid Forsler standing outdoors",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Postdigital media; digital sociability in education; visual arts teacher education; interactive research methodologies",
+      "bio": "Ingrid is a media and communication researcher with a background in visual arts education. Her work examines current digital sociability in education, teacher education reform, and the histories and futures of interactive research methodologies."
+    },
+    {
+      "name": "Tiago Martins Pinto",
+      "country": "Finland / Portugal",
+      "role": "Doctoral Researcher in Art Education; Workshop Master in ARTS IT",
+      "institution": "Aalto University, Finland",
+      "image": {
+        "src": "assets/images/members/tiago-martins-pinto.jpg",
+        "alt": "Black-and-white portrait of Tiago Martins Pinto",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Digital technology in art and education; informal media-based learning; participation; facilitation; creative practice with young people",
+      "bio": "Tiago works across digital technology, educational practice, and creative coding. His doctoral research focuses on informal artistic and media-based learning with immigrant-background young people in Eastern Helsinki, particularly questions of participation, facilitation, and creative practice.",
+      "links": [
+        { "label": "Website", "url": "https://www.tiagomartinspinto.com/" }
+      ]
+    },
+    {
+      "name": "Ingri Strand",
+      "country": "Norway",
+      "role": "Associate Professor in Digital Development in Design, Art and Crafts Education",
+      "institution": "Oslo Metropolitan University, Norway",
+      "image": {
+        "src": "assets/images/members/ingri-strand.jpg",
+        "alt": "Portrait of Ingri Strand",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Virtual reality and AI in art and crafts education; architectural tasks; screen-based media; interdisciplinary pedagogy",
+      "bio": "Ingri develops pedagogy in design, art, and crafts education in relation to new technologies. Her research includes virtual reality in lower-secondary architectural tasks and the introduction of technologies such as VR and AI into art and crafts education."
+    },
+    {
+      "name": "DanTommi",
+      "country": "Finland / Sweden",
+      "role": "Artist, art educator and artistic researcher",
+      "institution": "Finland / Sweden",
+      "image": {
+        "src": "assets/images/members/dantommi.jpg",
+        "alt": "Digitally fragmented portrait of DanTommi",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Physical, digital and virtual spaces; sculpture; photography; photogrammetry; 3D scanning; public clouds; visual environments",
+      "bio": "DanTommi's practice moves between physical, digital, and virtual spaces. Working with sculpture, photography, photogrammetry, 3D scanning, public clouds, and virtual environments, DanTommi explores how spaces become digital and how digital forms return to physical space."
+    },
+    {
+      "name": "Hanna",
+      "country": "Switzerland",
+      "role": "Doctoral Researcher and Lecturer",
+      "institution": "Lucerne University of Applied Sciences and Arts (HSLU), Switzerland",
+      "image": {
+        "src": "assets/images/members/hanna.jpg",
+        "alt": "Portrait of Hanna making a hand gesture",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Creative coding; art and media education; web cultures; software studies; computer aesthetics; postdigital subjectivation",
+      "bio": "Hanna teaches across hybrid bachelor modules in design, film, and art. Her doctoral work reconstructs creative coding from an art and media education perspective, asking how practitioners navigate its heterogeneous positions, assumptions, and unresolved questions."
+    },
+    {
+      "name": "Kasperi Mäki-Reinikka",
+      "country": "Finland",
+      "role": "University Teacher in Art Education; doctoral researcher",
+      "institution": "Aalto University, Finland",
+      "image": {
+        "src": "assets/images/members/kasperi-maki-reinikka.jpg",
+        "alt": "Portrait of Kasperi Mäki-Reinikka in front of a projected image",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Art, science, and technology; interdisciplinary dialogue; collaboration; media art; art education",
+      "bio": "Kasperi is a university teacher in art education and a doctoral researcher at Aalto University. With a background in school art teaching, media art, and arts organizations, he studies how dialogue and collaboration across art and science can have a systemic impact on postdigital society.",
+      "links": [
+        { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Kasperi-Maeki-Reinikka" }
+      ]
+    },
+    {
+      "name": "Pekka Mertala",
+      "country": "Finland",
+      "role": "Associate Professor of Multiliteracies and Digital Literacies",
+      "institution": "University of Jyväskylä, Finland",
+      "image": {
+        "src": "assets/images/members/pekka-mertala.jpg",
+        "alt": "Portrait of Pekka Mertala wearing glasses",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Postdigital childhood; education, texts, and technologies; new literacies; human-computer interaction; relational philosophy",
+      "bio": "Pekka studies what it means to be a child in a postdigital world. He leads the interdisciplinary Education, Texts, and Technologies research group and currently explores how different forms of talent are defined, recognized, and performed in postdigital conditions."
+    },
+    {
+      "name": "Lauri Palsa",
+      "country": "Finland",
       "role": "Postdoctoral Researcher",
-      "institution": "Research institute placeholder",
-      "researchInterests": "Post-AI education, critical data studies, feminist data sciences",
-      "bio": "Studies how AI systems shape knowledge practices, pedagogical agency, and the everyday politics of data in educational settings.",
-      "links": [
-        {
-          "label": "Website placeholder",
-          "url": "https://example.org"
-        }
-      ]
-    },
-    {
-      "name": "Member Placeholder 03",
-      "role": "University Lecturer",
-      "institution": "Faculty placeholder",
-      "researchInterests": "Sloyd, teacher education, more-than-digital pedagogies",
-      "bio": "Works with teacher education, craft traditions, and experimental pedagogies that connect material making with cultural analysis.",
-      "links": [
-        {
-          "label": "member03@example.org",
-          "url": "mailto:member03@example.org"
-        }
-      ]
-    },
-    {
-      "name": "Member Placeholder 04",
-      "role": "Professor",
-      "institution": "School of arts / education placeholder",
-      "researchInterests": "Critical technology studies, culture, art, ecological thinking",
-      "bio": "Develops interdisciplinary research environments around artistic inquiry, cultural critique, and technological imaginaries.",
-      "links": [
-        {
-          "label": "Website placeholder",
-          "url": "https://example.org"
-        }
-      ]
-    },
-    {
-      "name": "Member Placeholder 05",
-      "role": "Independent Researcher",
-      "institution": "Independent / artist-researcher placeholder",
-      "researchInterests": "Embodiment, repair cultures, artistic research methods",
-      "bio": "Combines experimental practice, writing, and public pedagogy to examine bodies, tools, infrastructures, and care.",
-      "links": [
-        {
-          "label": "member05@example.org",
-          "url": "mailto:member05@example.org"
-        }
-      ]
-    },
-    {
-      "name": "Member Placeholder 06",
-      "role": "Artist-Educator",
-      "institution": "Collective / studio placeholder",
-      "researchInterests": "Digital craft, workshops, participatory methods, media archaeology",
-      "bio": "Facilitates collaborative workshops that use old and new technologies to ask how futures are made, maintained, and refused.",
-      "links": [
-        {
-          "label": "Website placeholder",
-          "url": "https://example.org"
-        }
-      ]
+      "institution": "University of Jyväskylä, Finland",
+      "image": {
+        "src": "assets/images/members/lauri-palsa.jpg",
+        "alt": "Lauri Palsa photographed outdoors in an orchard",
+        "width": 900,
+        "height": 675
+      },
+      "researchInterests": "Literacies; media and data literacy; education policy; digital technologies in learning; ecological and social dimensions of educational technology",
+      "bio": "Lauri works with media literacy, data literacy, and education research across national and European contexts. His postdoctoral work considers how literacy concepts are reshaped in the postdigital age, with particular attention to the ecological and social dimensions of educational technology."
     }
   ]
 }

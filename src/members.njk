@@ -25,7 +25,7 @@ permalink: members.html
 
     <div class="member-grid">
       {# Edit members in src/_data/members.json. #}
-      {% for member in members.items %}
+{% for member in members.items %}
         <article class="window member-card">
           <div class="title-bar">
             <span class="window-box" aria-hidden="true"></span>
@@ -34,18 +34,20 @@ permalink: members.html
           </div>
           <div class="window-body">
             <figure class="member-portrait">
-              {% if member.image and member.image.src %}
+{% if member.image and member.image.src %}
                 <img
                   src="{{ member.image.src }}"
                   alt="{{ member.image.alt or 'Portrait of ' + member.name }}"
                   loading="lazy"
                   width="{{ member.image.width or 900 }}"
                   height="{{ member.image.height or 900 }}">
-              {% else %}
+{% else %}
                 <span class="member-portrait-placeholder" role="img" aria-label="Portrait placeholder for {{ member.name }}"></span>
-              {% endif %}
+{% endif %}
             </figure>
             <dl class="profile-list">
+              <dt>Country</dt>
+              <dd>{{ member.country }}</dd>
               <dt>Role</dt>
               <dd>{{ member.role }}</dd>
               <dt>Institution</dt>
@@ -54,16 +56,16 @@ permalink: members.html
               <dd>{{ member.researchInterests }}</dd>
             </dl>
             <p>{{ member.bio }}</p>
-            {% if member.links and member.links.length %}
+{% if member.links and member.links.length %}
               <p class="profile-links">
-                {% for link in member.links %}
+{% for link in member.links %}
                   <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %}<span aria-hidden="true">|</span>{% endif %}
-                {% endfor %}
+{% endfor %}
               </p>
-            {% endif %}
+{% endif %}
           </div>
         </article>
-      {% endfor %}
+{% endfor %}
     </div>
   </section>
 </main>

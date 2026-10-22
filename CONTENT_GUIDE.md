@@ -64,6 +64,7 @@ Open `src/_data/members.json` and add a new object inside `items`:
 ```json
 {
   "name": "Name Surname",
+  "country": "Country",
   "role": "Doctoral Researcher",
   "institution": "University / affiliation",
   "image": {
